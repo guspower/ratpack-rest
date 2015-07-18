@@ -9,26 +9,52 @@ import static ratpack.jackson.Jackson.json as jackson
 @Slf4j
 class RestHandler implements Handler {
 
-    private RestModule.RestEntity entity
+    private RestEntity entity
 
-    RestHandler(RestModule.RestEntity entity)  {
+    RestHandler(RestEntity entity)  {
         this.entity = entity
     }
 
     @Override
     void handle(Context context) throws Exception {
-        String id = context.pathTokens.id
 
-        if(id) {
-            def entity = entity.store.get(id)
-            if(entity) {
-                context.render jackson(entity)
-            } else {
-                context.clientError(404)
+        context.with {
+            String id = pathTokens.id
+
+            if(request.method.get) {
+                if(id) {
+                    get context, id
+                } else {
+                    getAll context
+                }
+            } else if(request.method.post) {
+                post context
             }
-        } else {
-            context.render jackson(entity.store.all)
         }
+    }
+
+    private void get(Context context, String id) {
+        def entity = entity.store.get(id)
+        if(entity) {
+            context.render jackson(entity)
+        } else {
+            context.clientError(404)
+        }
+    }
+
+    private void getAll(Context context) {
+        context.render jackson(entity.store.all)
+    }
+
+    private void post(Context context) {
+        String id = entity.store.create()
+
+        context.with {
+            response.headers.add 'location', "/api/${entity.name}/$id"
+            response.status(201)
+            response.send()
+        }
+
     }
 
 }

@@ -4,13 +4,16 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import groovy.transform.Memoized
 import ratpack.jackson.guice.JacksonModule
-import ratpack.rest.RestModule.RestEntity
 import ratpack.rest.store.EntityStore
 import ratpack.rest.store.InMemoryEntityStore
 import ratpack.test.internal.RatpackGroovyDslSpec
+import spock.lang.Shared
 import spock.lang.Unroll
 
 class SingleEntitySpec extends RatpackGroovyDslSpec {
+
+    @Shared
+    def jackson = new ObjectMapper()
 
     def "returns empty json list given no entries"() {
         given:
@@ -92,11 +95,40 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
             id   = 'expected'
     }
 
-    @Memoized
+    def "can add a new entity and retrieve it"() {
+        given:
+            app ([entity(name)])
+
+        when:
+            post "/api/$name"
+
+        then:
+            201 == response.statusCode
+            response.headers['location']
+
+        when:
+            String id = idFromResponse
+            get response.headers['location']
+
+        then:
+            !json.array
+            id == json.id.asText()
+
+        when:
+            get "/api/$name"
+
+        then:
+            json.array
+            1  == json.size()
+            id == json[0].id.asText()
+
+        where:
+            name = entityName()
+    }
+
     private JsonNode getJson() {
         assert response.statusCode == 200
 
-        def jackson = new ObjectMapper()
         jackson.readTree response.body.text
     }
 
@@ -112,16 +144,20 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
         }
     }
 
-    private EntityStore store(List data) {
-        new InMemoryEntityStore(data)
+    private EntityStore store(List data = []) {
+        data ? new InMemoryEntityStore(data[0].class, data) : new InMemoryEntityStore()
     }
 
     private RestEntity entity(String name, List data = []) {
-        new RestModule.RestEntity(name: name, store: store(data))
+        new RestEntity(name: name, store: store(data))
     }
 
     private String entityName() {
         "entity-${UUID.randomUUID()}"
+    }
+
+    private String getIdFromResponse() {
+        response.headers['location'].tokenize('/')[-1]
     }
 
 }

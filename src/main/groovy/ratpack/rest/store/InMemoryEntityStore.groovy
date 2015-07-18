@@ -4,12 +4,25 @@ import com.google.common.collect.ImmutableList
 
 class InMemoryEntityStore<T> implements EntityStore<T> {
 
-    private List<T> store = []
+    private final List<T> store = []
+    private final Class entityType
 
-    InMemoryEntityStore() {}
+    InMemoryEntityStore() {
+        this.entityType = HashMap.class
+    }
 
-    InMemoryEntityStore(List<T> data) {
+    InMemoryEntityStore(Class entityType, List data) {
+        this.entityType = entityType
         this.store = data
+    }
+
+    String create() {
+        def instance = entityType.newInstance()
+        String id = "${store.size()}"
+        instance.id = id
+
+        store << instance
+        id
     }
 
     @Override

@@ -13,7 +13,7 @@ class RestHandlers {
     }
 
     void register(GroovyChain chain) {
-        config.entities.each { RestModule.RestEntity entity ->
+        config.entities.each { RestEntity entity ->
             chain.path "api/${entity.name}/:id?", new RestHandler(entity)
         }
     }
