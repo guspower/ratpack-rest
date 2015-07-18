@@ -1,0 +1,4 @@
+task stage(type: Sync) {
+    into file("deploy")
+    with distributions.main.contents
+}

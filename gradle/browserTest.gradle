@@ -1,0 +1,30 @@
+configurations {
+    browserTestCompile.extendsFrom testCompile
+    browserTestRuntime.extendsFrom testRuntime
+}
+
+sourceSets {
+    browserTest {
+        resources.srcDir(file('src/ratpack'))
+        compileClasspath += (main.output + test.output)
+        runtimeClasspath += (main.output + test.output)
+    }
+}
+
+task browserTest(type: Test) {
+    testClassesDir = sourceSets.browserTest.output.classesDir
+    classpath = sourceSets.browserTest.runtimeClasspath
+
+    reports.html.destination = reporting.file("browserTest")
+
+    shouldRunAfter test
+}
+
+check.dependsOn browserTest
+
+idea {
+    module {
+        testSourceDirs += sourceSets.browserTest.allSource.srcDirs
+        scopes.TEST.plus += [configurations.browserTestCompile]
+    }
+}

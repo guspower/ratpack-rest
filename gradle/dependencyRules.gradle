@@ -1,0 +1,31 @@
+def artifactVersionMappings = [
+    "com.fasterxml.jackson.core:jackson-core": new ArtifactVersionMapping(excludedVersions: ["2.5.1"], useVersion: "2.5.2"),
+    "com.fasterxml.jackson.core:jackson-databind": new ArtifactVersionMapping(excludedVersions: ["2.4.4", "2.5.1"], useVersion: "2.5.2"),
+    "com.google.guava:guava": new ArtifactVersionMapping(excludedVersions: ["15.0"], useVersion: "18.0"),
+    "org.codehaus.groovy:groovy-all": new ArtifactVersionMapping(excludedVersions: ["2.3.10", "2.4.1"], useVersion: "2.4.3"),
+    "org.slf4j:slf4j-api": new ArtifactVersionMapping(excludedVersions: ["1.7.7", "1.7.8"], useVersion: "1.7.12"),
+    "org.slf4j:jcl-over-slf4j": new ArtifactVersionMapping(excludedVersions: ["1.7.8"], useVersion: "1.7.12"),
+    "org.apache.httpcomponents:httpclient": new ArtifactVersionMapping(excludedVersions: ["4.2.2"], useVersion: "4.4.1")
+]
+
+configurations.all {
+    resolutionStrategy {
+        failOnVersionConflict()
+        eachDependency { details ->
+            def requested = details.requested
+
+            def groupAndName = "$requested.group:$requested.name".toString()
+            if (artifactVersionMappings.containsKey(groupAndName)) {
+                def mapping = artifactVersionMappings[groupAndName]
+                if (mapping.excludedVersions.contains(requested.version)) {
+                    details.useVersion mapping.useVersion
+                }
+            }
+        }
+    }
+}
+
+class ArtifactVersionMapping {
+    String useVersion
+    List<String> excludedVersions
+}

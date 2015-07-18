@@ -1,0 +1,13 @@
+apply plugin: "codenarc"
+
+codenarc.configFile = file('gradle/codenarc/rulesets.groovy')
+
+dependencies {
+    codenarc("org.codenarc:CodeNarc:0.24") {
+        exclude module: "GMetrics"
+    }
+}
+
+tasks.withType(Test) {
+    mustRunAfter project.tasks.withType(CodeNarc)
+}

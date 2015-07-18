@@ -1,0 +1,15 @@
+idea {
+    project {
+        wildcards.add 'GebConfig.groovy'
+        vcs = 'Git'
+
+        ipr {
+            withXml { provider ->
+                def node = provider.asNode()
+                ["codeStyle", "groovyCodeStyle"].each {
+                    node.append(new XmlParser().parse(file("gradle/idea/${it}.xml")))
+                }
+            }
+        }
+    }
+}

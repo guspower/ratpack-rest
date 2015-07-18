@@ -1,0 +1,99 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "io.ratpack:ratpack-gradle:0.9.18"
+    }
+}
+
+plugins {
+    id "com.jfrog.bintray" version "1.2"
+}
+
+apply plugin: "io.ratpack.ratpack-groovy"
+apply plugin: "idea"
+apply plugin: 'maven-publish'
+
+apply from: "gradle/idea/idea.gradle"
+apply from: "gradle/dependencyRules.gradle"
+apply from: "gradle/browserTest.gradle"
+apply from: "gradle/heroku.gradle"
+apply from: "gradle/codenarc/codenarc.gradle"
+
+mainClassName = "ratpack.rest.Main"
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    versions = [
+        logback: "1.1.3",
+        jodd:    "3.6.6",
+        spock:   "1.0-groovy-2.4"
+    ]
+
+    releaseVersion = '0.1-SNAPSHOT'
+}
+
+dependencies {
+    compile ratpack.dependency("session")
+    compile ratpack.dependency("jackson-guice")
+    compile "com.stormpath.sdk:stormpath-sdk-httpclient:1.0.RC4.5"
+    compile "ch.qos.logback:logback-classic:${versions.logback}"
+
+    testCompile("org.spockframework:spock-core:${versions.spock}")
+    testCompile("org.jodd:jodd-http:${versions.jodd}")
+
+    browserTestCompile "org.gebish:geb-spock:0.12.0"
+    browserTestCompile "org.seleniumhq.selenium:selenium-firefox-driver:2.46.0"
+    browserTestCompile("org.spockframework:spock-guice:${versions.spock}")
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId    'com.energizedwork'
+            artifactId 'ratpack-rest'
+            version    releaseVersion
+
+            from       components.java
+        }
+    }
+}
+
+bintray {
+    dryRun = false
+    publish = true
+
+    key = bintrayApiKey
+    user = bintrayUser
+
+    pkg {
+        repo = 'maven'
+        name = 'ratpack-rest'
+        desc = 'Ratpack module for quickly creating REST endpoints.'
+
+        licenses = ['Apache-2.0']
+
+        websiteUrl = 'https://github.com/guspower/ratpack-rest'
+        issueTrackerUrl = 'https://github.com/guspower/ratpack-rest/issues'
+        vcsUrl = 'https://github.com/guspower/ratpack-rest.git'
+
+        labels = ['ratpack', 'rest', 'groovy']
+        publicDownloadNumbers = true
+
+        version {
+            name = releaseVersion
+
+            mavenCentralSync {
+                sync = false
+            }
+        }
+    }
+
+}
