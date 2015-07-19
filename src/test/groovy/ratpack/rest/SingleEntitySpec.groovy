@@ -2,7 +2,6 @@ package ratpack.rest
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
-import groovy.transform.Memoized
 import ratpack.jackson.guice.JacksonModule
 import ratpack.rest.store.EntityStore
 import ratpack.rest.store.InMemoryEntityStore
