@@ -37,6 +37,8 @@ ext {
         spock:   "1.0-groovy-2.4"
     ]
 
+    bintrayApiKey  = '<no-key>'
+    bintrayUser    = '<no-user>'
     releaseVersion = '0.1-SNAPSHOT'
 }
 
