@@ -8,4 +8,6 @@ interface EntityStore<T> {
 
     T get(String id)
 
+    Class getType()
+
 }

@@ -2,6 +2,8 @@ package ratpack.rest
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
+import groovy.json.JsonOutput
+import ratpack.http.client.RequestSpec
 import ratpack.jackson.guice.JacksonModule
 import ratpack.rest.store.EntityStore
 import ratpack.rest.store.InMemoryEntityStore
@@ -124,6 +126,38 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
         where:
             name = entityName()
     }
+
+    def "can add a new entity with arbitrary json data"() {
+        given:
+            app ([entity(name)])
+
+        when:
+            requestSpec { RequestSpec spec ->
+                spec.body { RequestSpec.Body body ->
+                    body.type('application/json')
+                    body.text(JsonOutput.toJson(data))
+                }
+            }
+            post "/api/$name"
+
+        then:
+            201 == response.statusCode
+            response.headers['location']
+
+        when:
+            String id = idFromResponse
+            get response.headers['location']
+
+        then:
+            !json.array
+            data.field1 == json.field1.asText()
+            data.field2 == json.field2.asText()
+
+        where:
+            name = entityName()
+            data = [field1:'data1', field2:'data2']
+    }
+
 
     private JsonNode getJson() {
         assert response.statusCode == 200

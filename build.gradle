@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 buildscript {
     repositories {
         mavenCentral()
@@ -39,8 +41,11 @@ ext {
 
     bintrayApiKey  = '<no-key>'
     bintrayUser    = '<no-user>'
-    releaseVersion = '0.1-SNAPSHOT'
+
+    releaseVersion = calculateVersion('0.1-SNAPSHOT')
 }
+
+version = '0.1-SNAPSHOT'
 
 dependencies {
     compile ratpack.dependency("session")
@@ -98,4 +103,15 @@ bintray {
         }
     }
 
+}
+
+String calculateVersion(String version) {
+    String result = version
+    if(version.endsWith('SNAPSHOT')) {
+        def format = new SimpleDateFormat('yyyyMMddHHmmss')
+        format.setCalendar(Calendar.getInstance(TimeZone.getTimeZone('UTC')));
+        String date = format.format(new Date())
+        result = version.replace('SNAPSHOT', date)
+    }
+    result
 }

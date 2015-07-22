@@ -4,7 +4,8 @@ import groovy.util.logging.Slf4j
 import ratpack.handling.Context
 import ratpack.handling.Handler
 
-import static ratpack.jackson.Jackson.json as jackson
+import static ratpack.jackson.Jackson.json as toJson
+import static ratpack.jackson.Jackson.fromJson as fromJson
 
 @Slf4j
 class RestHandler implements Handler {
@@ -36,18 +37,22 @@ class RestHandler implements Handler {
     private void get(Context context, String id) {
         def entity = entity.store.get(id)
         if(entity) {
-            context.render jackson(entity)
+            context.render toJson(entity)
         } else {
             context.clientError(404)
         }
     }
 
     private void getAll(Context context) {
-        context.render jackson(entity.store.all)
+        context.render toJson(entity.store.all)
     }
 
     private void post(Context context) {
-        String id = entity.store.create()
+        def data
+        if(isJsonRequest(context)) {
+            data = context.parse(fromJson(entity.store.type))
+        }
+        String id = entity.store.create(data)
 
         context.with {
             response.headers.add 'location', "/api/${entity.name}/$id"
@@ -55,6 +60,10 @@ class RestHandler implements Handler {
             response.send()
         }
 
+    }
+
+    private boolean isJsonRequest(Context context) {
+        context.request.headers['content-type'] == 'application/json'
     }
 
 }

@@ -16,10 +16,16 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
         this.store = data
     }
 
-    String create() {
+    Class getType() { entityType }
+
+    String create(Map data = [:]) {
         def instance = entityType.newInstance()
-        String id = "${store.size()}"
+        String id = UUID.randomUUID().toString()
         instance.id = id
+
+        data.each { key, value ->
+            instance."$key" = value
+        }
 
         store << instance
         id
