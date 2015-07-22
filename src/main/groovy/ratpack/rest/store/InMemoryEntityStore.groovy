@@ -11,6 +11,10 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
         this.entityType = HashMap.class
     }
 
+    InMemoryEntityStore(Class entityType) {
+        this.entityType = entityType
+    }
+
     InMemoryEntityStore(Class entityType, List data) {
         this.entityType = entityType
         this.store = data

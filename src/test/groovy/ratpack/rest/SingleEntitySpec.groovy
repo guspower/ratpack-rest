@@ -3,6 +3,8 @@ package ratpack.rest
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import groovy.json.JsonOutput
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 import ratpack.http.client.RequestSpec
 import ratpack.jackson.guice.JacksonModule
 import ratpack.rest.store.EntityStore
@@ -132,12 +134,7 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
             app ([entity(name)])
 
         when:
-            requestSpec { RequestSpec spec ->
-                spec.body { RequestSpec.Body body ->
-                    body.type('application/json')
-                    body.text(JsonOutput.toJson(data))
-                }
-            }
+            jsonPayload data
             post "/api/$name"
 
         then:
@@ -158,6 +155,30 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
             data = [field1:'data1', field2:'data2']
     }
 
+    def "can add a new typed entity and retrieve it"() {
+        given:
+            app ([entity(Bus)])
+
+        when:
+            jsonPayload data
+            post "/api/$name"
+
+        then:
+            201 == response.statusCode
+            response.headers['location']
+
+        when:
+            String id = idFromResponse
+            get response.headers['location']
+
+        then:
+            !json.array
+            id == json.id.asText()
+
+        where:
+            name = 'bus'
+            data = [name:'419', colour:'red']
+    }
 
     private JsonNode getJson() {
         assert response.statusCode == 200
@@ -182,7 +203,11 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
     }
 
     private RestEntity entity(String name, List data = []) {
-        new RestEntity(name: name, store: store(data))
+        new RestEntity(name, store(data))
+    }
+
+    private RestEntity entity(Class type, List data = []) {
+        new RestEntity(type, store(data))
     }
 
     private String entityName() {
@@ -192,5 +217,24 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
     private String getIdFromResponse() {
         response.headers['location'].tokenize('/')[-1]
     }
+
+    private void jsonPayload(Map data) {
+        requestSpec { RequestSpec spec ->
+            spec.body { RequestSpec.Body body ->
+                body.type('application/json')
+                body.text(JsonOutput.toJson(data))
+            }
+        }
+    }
+
+}
+
+@EqualsAndHashCode
+@ToString(includePackage = false, includeNames = true)
+class Bus {
+
+    String id
+    String name
+    String colour
 
 }
