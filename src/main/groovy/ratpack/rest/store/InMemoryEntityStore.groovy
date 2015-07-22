@@ -2,6 +2,11 @@ package ratpack.rest.store
 
 import com.google.common.collect.ImmutableList
 
+import javax.validation.ConstraintViolation
+import javax.validation.ConstraintViolationException
+import javax.validation.Validation
+import javax.validation.Validator
+
 class InMemoryEntityStore<T> implements EntityStore<T> {
 
     private final List<T> store = []
@@ -22,13 +27,28 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
 
     Class getType() { entityType }
 
-    String create(Map data = [:]) {
+    String create(Object data) throws ConstraintViolationException {
         def instance = entityType.newInstance()
+
+        if(data) {
+            if(data instanceof Map) {
+                data.each { key, value ->
+                    instance."$key" = value
+                }
+            } else {
+                data.properties.findAll { key, value -> key != 'class' }.each { key, value ->
+                    instance."$key" = value
+                }
+            }
+        }
+
         String id = UUID.randomUUID().toString()
         instance.id = id
 
-        data.each { key, value ->
-            instance."$key" = value
+        Validator validator = Validation.buildDefaultValidatorFactory().validator
+        Set<ConstraintViolation> violations = validator.validate(instance)
+        if(violations) {
+            throw new ConstraintViolationException(violations)
         }
 
         store << instance

@@ -4,6 +4,8 @@ import groovy.util.logging.Slf4j
 import ratpack.handling.Context
 import ratpack.handling.Handler
 
+import javax.validation.ConstraintViolationException
+
 import static ratpack.jackson.Jackson.json as toJson
 import static ratpack.jackson.Jackson.fromJson as fromJson
 
@@ -52,12 +54,21 @@ class RestHandler implements Handler {
         if(isJsonRequest(context)) {
             data = context.parse(fromJson(entity.store.type))
         }
-        String id = entity.store.create(data)
 
-        context.with {
-            response.headers.add 'location', "/api/${entity.name}/$id"
-            response.status(201)
-            response.send()
+        try {
+            String id = entity.store.create(data)
+
+            context.with {
+                response.headers.add 'location', "/api/${entity.name}/$id"
+                response.status(201)
+                response.send()
+            }
+        } catch(ConstraintViolationException validation) {
+            context.with {
+                response.status(400)
+                response.send()
+            }
+
         }
 
     }

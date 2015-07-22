@@ -13,6 +13,8 @@ import ratpack.test.internal.RatpackGroovyDslSpec
 import spock.lang.Shared
 import spock.lang.Unroll
 
+import javax.validation.constraints.NotNull
+
 class SingleEntitySpec extends RatpackGroovyDslSpec {
 
     @Shared
@@ -175,9 +177,56 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
             !json.array
             id == json.id.asText()
 
+            data.name   == json.name.asText()
+            data.colour == json.colour.asText()
+
         where:
             name = 'bus'
             data = [name:'419', colour:'red']
+    }
+
+    def "can add a valid validating entity"() {
+        given:
+            app ([entity(Car)])
+
+        when:
+            jsonPayload data
+            post "/api/$name"
+
+        then:
+            201 == response.statusCode
+            response.headers['location']
+
+        when:
+            String id = idFromResponse
+            get response.headers['location']
+
+        then:
+            !json.array
+            id == json.id.asText()
+
+            data.manufacturer == json.manufacturer.asText()
+            data.colour       == json.colour.asText()
+
+        where:
+            name = 'car'
+            data = [manufacturer:'Volvo', colour:'red']
+    }
+
+    def "invalid validating entity returns a 400 bad request with error details"() {
+        given:
+            app ([entity(Car)])
+
+        when:
+            jsonPayload data
+            post "/api/$name"
+
+        then:
+            400 == response.statusCode
+
+        where:
+            name = 'car'
+            data = [colour:'red']
     }
 
     private JsonNode getJson() {
@@ -198,16 +247,16 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
         }
     }
 
-    private EntityStore store(List data = []) {
-        data ? new InMemoryEntityStore(data[0].class, data) : new InMemoryEntityStore()
+    private EntityStore store(Class type = HashMap.class, List data = []) {
+        data ? new InMemoryEntityStore(type, data) : new InMemoryEntityStore(type)
     }
 
     private RestEntity entity(String name, List data = []) {
-        new RestEntity(name, store(data))
+        new RestEntity(name, store(HashMap.class, data))
     }
 
     private RestEntity entity(Class type, List data = []) {
-        new RestEntity(type, store(data))
+        new RestEntity(type, store(type, data))
     }
 
     private String entityName() {
@@ -235,6 +284,19 @@ class Bus {
 
     String id
     String name
+    String colour
+
+}
+
+@EqualsAndHashCode
+@ToString(includePackage = false, includeNames = true)
+class Car {
+
+    String id
+
+    @NotNull
+    String manufacturer
+
     String colour
 
 }
