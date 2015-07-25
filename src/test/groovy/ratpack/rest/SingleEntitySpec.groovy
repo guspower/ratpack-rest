@@ -222,15 +222,21 @@ class SingleEntitySpec extends RatpackGroovyDslSpec {
             post "/api/$name"
 
         then:
-            400 == response.statusCode
+            def errors = getJson(400)
+            1 == errors.size()
+            'manufacturer' == errors[0].field.asText()
+            'Car'          == errors[0].type.asText()
+            !errors[0].value
 
         where:
             name = 'car'
             data = [colour:'red']
     }
 
-    private JsonNode getJson() {
-        assert response.statusCode == 200
+    private JsonNode getJson(int code = 200) {
+        assert response.statusCode == code
+
+        println response.body.text
 
         jackson.readTree response.body.text
     }

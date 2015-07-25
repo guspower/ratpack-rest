@@ -66,9 +66,8 @@ class RestHandler implements Handler {
         } catch(ConstraintViolationException validation) {
             context.with {
                 response.status(400)
-                response.send()
+                render toJson(ConstraintFailure.build(validation))
             }
-
         }
 
     }

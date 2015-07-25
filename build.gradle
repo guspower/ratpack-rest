@@ -1,3 +1,5 @@
+import jodd.http.HttpRequest
+
 import java.text.SimpleDateFormat
 
 buildscript {
@@ -9,6 +11,7 @@ buildscript {
     }
     dependencies {
         classpath "io.ratpack:ratpack-gradle:0.9.18"
+        classpath "org.jodd:jodd-http:3.6.6"
     }
 }
 
@@ -118,4 +121,13 @@ String calculateVersion(String version) {
         result = version.replace('SNAPSHOT', date)
     }
     result
+}
+
+task travis << {
+    def xml = HttpRequest.get('https://api.travis-ci.org/repos/guspower/ratpack-rest/cc.xml').send().body()
+    def data = new XmlSlurper().parseText(xml)
+    String status = data.Project.'@lastBuildStatus'.text()
+    if(!status.toLowerCase().contains('success')) {
+        throw new Exception("Travis build failure - [$status]")
+    }
 }
