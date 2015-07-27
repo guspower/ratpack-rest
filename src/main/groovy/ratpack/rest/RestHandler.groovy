@@ -25,13 +25,11 @@ class RestHandler implements Handler {
             String id = pathTokens.id
 
             if(request.method.get) {
-                if(id) {
-                    get context, id
-                } else {
-                    getAll context
-                }
+                id ? get(context, id) : getAll(context)
             } else if(request.method.post) {
                 post context
+            } else if(request.method.delete) {
+                id ? delete(context, id) : deleteAll(context)
             }
         }
     }
@@ -47,6 +45,25 @@ class RestHandler implements Handler {
 
     private void getAll(Context context) {
         context.render toJson(entity.store.all)
+    }
+
+    private void delete(Context context, String id) {
+        deleteResponse context, entity.store.delete(id)
+    }
+
+    private void deleteAll(Context context) {
+        deleteResponse context, entity.store.deleteAll()
+    }
+
+    private void deleteResponse(Context context, boolean deleted) {
+        if(deleted) {
+            context.with {
+                response.status(200)
+                response.send()
+            }
+        } else {
+            context.clientError(404)
+        }
     }
 
     private void post(Context context) {

@@ -6,6 +6,10 @@ interface EntityStore<T> {
 
     String create(Object data) throws ConstraintViolationException
 
+    boolean delete(String id)
+
+    boolean deleteAll()
+
     List<T> getAll()
 
     T get(String id)

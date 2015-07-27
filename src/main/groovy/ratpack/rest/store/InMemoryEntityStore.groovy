@@ -56,6 +56,21 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
     }
 
     @Override
+    boolean delete(String id) {
+        def entity = store.find { it.id == id }
+        if(entity) {
+            store.remove entity
+        }
+        entity
+    }
+
+    @Override
+    boolean deleteAll() {
+        store.clear()
+        true
+    }
+
+    @Override
     List<T> getAll() {
         ImmutableList.copyOf(store)
     }
