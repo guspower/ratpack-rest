@@ -20,7 +20,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             0 == json.size()
 
         where:
-            name = entityName()
+            name = newEntityName()
     }
 
     def "returns 404 for unknown entity"() {
@@ -34,7 +34,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             response.statusCode == SC_NOT_FOUND
 
         where:
-            unknown = entityName()
+            unknown = newEntityName()
     }
 
     @Unroll("returns json list given #data entities")
@@ -52,7 +52,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
 
         where:
             data = [[field:'value1'], [field:'value2']]
-            name = entityName()
+            name = newEntityName()
     }
 
     def "returns 404 for unknown entity id"() {
@@ -66,7 +66,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             response.statusCode == SC_NOT_FOUND
 
         where:
-            name = entityName()
+            name = newEntityName()
             id   = 'unknownId'
     }
 
@@ -83,7 +83,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             'value2' == json.field.asText()
 
         where:
-            name = entityName()
+            name = newEntityName()
             data = [[field:'value1', id:'other'], [field:'value2', id:'expected']]
             id   = 'expected'
     }

@@ -37,7 +37,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             id == json[0].id.asText()
 
         where:
-            name = entityName()
+            name = newEntityName()
     }
 
     def "can add a new entity with arbitrary json data"() {
@@ -62,7 +62,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             data.field2 == json.field2.asText()
 
         where:
-            name = entityName()
+            name = newEntityName()
             data = [field1:'data1', field2:'data2']
     }
 

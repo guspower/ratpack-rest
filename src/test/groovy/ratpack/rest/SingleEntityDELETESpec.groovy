@@ -30,7 +30,7 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             response.statusCode == SC_NOT_FOUND
 
         where:
-            name = entityName()
+            name = newEntityName()
             id   = newId()
     }
 
@@ -45,7 +45,7 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             response.statusCode == SC_NOT_FOUND
 
         where:
-            name = entityName()
+            name = newEntityName()
             id   = newId()
     }
 
@@ -75,7 +75,7 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
 
         where:
             data = [[field:'value1'], [field:'value2']]
-            name = entityName()
+            name = newEntityName()
     }
 
     def "returns 404 for delete unknown entity type"() {
@@ -89,7 +89,7 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             response.statusCode == SC_NOT_FOUND
 
         where:
-            unknown = entityName()
+            unknown = newEntityName()
     }
 
 }

@@ -16,4 +16,6 @@ interface EntityStore<T> {
 
     Class getType()
 
+    boolean update(String id, Object data) throws ConstraintViolationException
+
 }

@@ -29,18 +29,7 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
 
     String create(Object data) throws ConstraintViolationException {
         def instance = entityType.newInstance()
-
-        if(data) {
-            if(data instanceof Map) {
-                data.each { key, value ->
-                    instance."$key" = value
-                }
-            } else {
-                data.properties.findAll { key, value -> key != 'class' }.each { key, value ->
-                    instance."$key" = value
-                }
-            }
-        }
+        apply instance, data
 
         String id = UUID.randomUUID().toString()
         instance.id = id
@@ -80,6 +69,50 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
         store.find {
             it.id == id
         }
+    }
+
+    @Override
+    boolean update(String id, Object update) throws ConstraintViolationException {
+        def existing = get(id)
+        def updated
+        if(update) {
+            if(withoutId(update)) {
+                updated = apply(existing.clone(), update)
+                store.remove existing
+                store.add updated
+            }
+        }
+        updated
+    }
+
+    private Map withoutId(Object data) {
+        Map result
+
+        if(data) {
+            if(data instanceof Map) {
+                result = data
+            } else {
+                result = data.properties
+            }
+            result.remove('id')
+        }
+
+        result
+    }
+
+    private apply(Object instance, Object data) {
+        if(data) {
+            if(data instanceof Map) {
+                data.each { key, value ->
+                    instance."$key" = value
+                }
+            } else {
+                data.properties.findAll { key, value -> key != 'class' }.each { key, value ->
+                    instance."$key" = value
+                }
+            }
+        }
+        instance
     }
 
 }

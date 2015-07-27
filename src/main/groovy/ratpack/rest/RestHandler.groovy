@@ -31,6 +31,8 @@ class RestHandler implements Handler {
                 post context
             } else if(request.method.delete) {
                 id ? delete(context, id) : deleteAll(context)
+            } else if(request.method.put) {
+                id ? put(context, id) : putAll(context)
             }
         }
     }
@@ -40,12 +42,35 @@ class RestHandler implements Handler {
         if(entity) {
             context.render toJson(entity)
         } else {
-            context.clientError(SC_NOT_FOUND)
+            context.clientError SC_NOT_FOUND
         }
     }
 
     private void getAll(Context context) {
         context.render toJson(entity.store.all)
+    }
+
+    private void put(Context context, String id) {
+        def data
+
+        if(entity.store.get(id)) {
+            if (isJsonRequest(context)) {
+                data = context.parse(fromJson(entity.store.type))
+                if (entity.store.update(id, data)) {
+                    context.clientError SC_ACCEPTED
+                } else {
+                    context.clientError SC_NOT_MODIFIED
+                }
+            } else {
+                context.clientError SC_NOT_MODIFIED
+            }
+        } else {
+            context.clientError SC_NOT_FOUND
+        }
+    }
+
+    private void putAll(Context context) {
+
     }
 
     private void delete(Context context, String id) {
