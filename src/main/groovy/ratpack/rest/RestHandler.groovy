@@ -8,6 +8,7 @@ import javax.validation.ConstraintViolationException
 
 import static ratpack.jackson.Jackson.json as toJson
 import static ratpack.jackson.Jackson.fromJson as fromJson
+import static org.apache.http.HttpStatus.*
 
 @Slf4j
 class RestHandler implements Handler {
@@ -39,7 +40,7 @@ class RestHandler implements Handler {
         if(entity) {
             context.render toJson(entity)
         } else {
-            context.clientError(404)
+            context.clientError(SC_NOT_FOUND)
         }
     }
 
@@ -58,11 +59,11 @@ class RestHandler implements Handler {
     private void deleteResponse(Context context, boolean deleted) {
         if(deleted) {
             context.with {
-                response.status(200)
+                response.status(SC_NO_CONTENT)
                 response.send()
             }
         } else {
-            context.clientError(404)
+            context.clientError(SC_NOT_FOUND)
         }
     }
 
@@ -77,12 +78,12 @@ class RestHandler implements Handler {
 
             context.with {
                 response.headers.add 'location', "/api/${entity.name}/$id"
-                response.status(201)
+                response.status(SC_CREATED)
                 response.send()
             }
         } catch(ConstraintViolationException validation) {
             context.with {
-                response.status(400)
+                response.status(SC_BAD_REQUEST)
                 render toJson(ConstraintFailure.build(validation))
             }
         }

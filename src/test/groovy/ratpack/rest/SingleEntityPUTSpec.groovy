@@ -7,17 +7,17 @@ import ratpack.rest.fixture.RestDslSpec
 
 import static org.apache.http.HttpStatus.*
 
-class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
+class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
 
-    def "can add a new entity and retrieve it"() {
+    def "can update an existing entity"() {
         given:
             app ([entity(name, [])])
 
         when:
-            post "/api/$name"
+            put "/api/$name/$id"
 
         then:
-            response.statusCode == SC_CREATED
+            response.statusCode == SC_ACCEPTED
             response.headers['location']
 
         when:
@@ -40,7 +40,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             name = entityName()
     }
 
-    def "can add a new entity with arbitrary json data"() {
+    def "can update an existing entity with arbitrary json data"() {
         given:
             app ([entity(name, [])])
 
@@ -66,7 +66,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             data = [field1:'data1', field2:'data2']
     }
 
-    def "can add a new typed entity and retrieve it"() {
+    def "can update an existing typed entity"() {
         given:
             app ([entity(Bus, [])])
 
@@ -75,7 +75,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             post "/api/$name"
 
         then:
-            response.statusCode == SC_CREATED
+            201 == response.statusCode
             response.headers['location']
 
         when:
@@ -94,7 +94,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             data = [name:'419', colour:'red']
     }
 
-    def "can add a valid validating entity"() {
+    def "can update a validating entity"() {
         given:
             app ([entity(Car, [])])
 
@@ -103,7 +103,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             post "/api/$name"
 
         then:
-            response.statusCode == SC_CREATED
+            201 == response.statusCode
             response.headers['location']
 
         when:
@@ -122,7 +122,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             data = [manufacturer:'Volvo', colour:'red']
     }
 
-    def "invalid validating entity returns a 400 bad request with error details"() {
+    def "updating a validating entity with invalid data returns a 400 bad request with error details"() {
         given:
             app ([entity(Car, [])])
 
@@ -131,7 +131,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             post "/api/$name"
 
         then:
-            def errors = getJson(SC_BAD_REQUEST)
+            def errors = getJson(400)
             1 == errors.size()
             'manufacturer'    == errors[0].field.asText()
             'Car'             == errors[0].type.asText()
@@ -141,6 +141,38 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
         where:
             name = 'car'
             data = [colour:'red']
+    }
+
+    def "can update existing entities"() { //IS THIS A POST OR PUT? Maybe POST SHOULD FAIL IF THERE ARE EXISTING?
+        // AND PUT SHOULD FAIL IF ANY OF THE ENTITES BEING UPDATED DO NOT EXIST?
+        given:
+            app ([entity(name, [])])
+
+        when:
+            post "/api/$name"
+
+        then:
+            201 == response.statusCode
+            response.headers['location']
+
+        when:
+            String id = idFromResponse
+            get response.headers['location']
+
+        then:
+            !json.array
+            id == json.id.asText()
+
+        when:
+            get "/api/$name"
+
+        then:
+            json.array
+            1  == json.size()
+            id == json[0].id.asText()
+
+        where:
+            name = entityName()
     }
 
 }

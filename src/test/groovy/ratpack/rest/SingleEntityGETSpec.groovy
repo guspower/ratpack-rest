@@ -4,6 +4,8 @@ import ratpack.rest.fixture.JsonHelper
 import ratpack.rest.fixture.RestDslSpec
 import spock.lang.Unroll
 
+import static org.apache.http.HttpStatus.*
+
 class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
 
     def "returns empty json list given no entries"() {
@@ -29,7 +31,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             get "/api/$unknown"
 
         then:
-            response.statusCode == 404
+            response.statusCode == SC_NOT_FOUND
 
         where:
             unknown = entityName()
@@ -61,7 +63,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             get "/api/$name/$id"
 
         then:
-            response.statusCode == 404
+            response.statusCode == SC_NOT_FOUND
 
         where:
             name = entityName()

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import groovy.json.JsonOutput
 import ratpack.http.client.RequestSpec
 
+import static org.apache.http.HttpStatus.*
+
 trait JsonHelper {
 
     private ObjectMapper _jackson = new ObjectMapper()
@@ -18,7 +20,7 @@ trait JsonHelper {
     }
 
     JsonNode getJson() {
-        getJson 200
+        getJson SC_OK
     }
 
     String getIdFromResponse() {

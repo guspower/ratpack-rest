@@ -42,4 +42,8 @@ class RestDslSpec extends RatpackGroovyDslSpec {
         "entity-${UUID.randomUUID()}"
     }
 
+    String newId() {
+        UUID.randomUUID().toString()
+    }
+
 }

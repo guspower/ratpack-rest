@@ -2,7 +2,8 @@ package ratpack.rest
 
 import ratpack.rest.fixture.JsonHelper
 import ratpack.rest.fixture.RestDslSpec
-import spock.lang.Unroll
+
+import static org.apache.http.HttpStatus.*
 
 class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
 
@@ -20,17 +21,17 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             delete "/api/$name/$id"
 
         then:
-            response.statusCode == 200
+            response.statusCode == SC_NO_CONTENT
 
         when:
             get "/api/$name/$id"
 
         then:
-            response.statusCode == 404
+            response.statusCode == SC_NOT_FOUND
 
         where:
             name = entityName()
-            id   = UUID.randomUUID().toString()
+            id   = newId()
     }
 
     def "returns 404 for delete unknown entity"() {
@@ -41,11 +42,11 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             delete "/api/$name/$id"
 
         then:
-            response.statusCode == 404
+            response.statusCode == SC_NOT_FOUND
 
         where:
             name = entityName()
-            id   = UUID.randomUUID().toString()
+            id   = newId()
     }
 
     def "delete all entities"() {
@@ -63,7 +64,7 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             delete "/api/$name"
 
         then:
-            response.statusCode == 200
+            response.statusCode == SC_NO_CONTENT
 
         when:
             get "/api/$name"
@@ -85,7 +86,7 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             delete "/api/$unknown"
 
         then:
-            response.statusCode == 404
+            response.statusCode == SC_NOT_FOUND
 
         where:
             unknown = entityName()
