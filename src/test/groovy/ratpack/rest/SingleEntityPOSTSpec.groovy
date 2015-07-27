@@ -131,8 +131,9 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
         then:
             def errors = getJson(400)
             1 == errors.size()
-            'manufacturer' == errors[0].field.asText()
-            'Car'          == errors[0].type.asText()
+            'manufacturer'    == errors[0].field.asText()
+            'Car'             == errors[0].type.asText()
+            'may not be null' == errors[0].message.asText()
             !errors[0].value
 
         where:

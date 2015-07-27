@@ -15,13 +15,15 @@ class ConstraintFailure {
     }
 
     ConstraintFailure(ConstraintViolation violation) {
-        this.field = violation.propertyPath
-        this.value = violation.invalidValue
-        this.type  = violation.rootBeanClass.simpleName
+        this.field   = violation.propertyPath
+        this.value   = violation.invalidValue
+        this.type    = violation.rootBeanClass.simpleName
+        this.message = violation.message
     }
 
     String field
     String value
     String type
+    String message
 
 }
