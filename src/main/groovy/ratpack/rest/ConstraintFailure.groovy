@@ -23,6 +23,14 @@ class ConstraintFailure {
         )]
     }
 
+    static List<ConstraintFailure> noClientSuppliedId(String name) {
+        [new ConstraintFailure(
+            field:   'id',
+            type:    name,
+            message: 'must be specified in url by client'
+        )]
+    }
+
     ConstraintFailure(Map data) {
         data.each { key, value ->
             this."$key" = value

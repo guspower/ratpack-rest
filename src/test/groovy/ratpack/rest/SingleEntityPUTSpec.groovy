@@ -136,6 +136,58 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
             data = [manufacturer:'Volvo', colour:'red']
     }
 
+    def "cannot add an entry to an unknown entity type"() {
+        given:
+            app()
+
+        when:
+            jsonPayload data
+            put "/api/$name/$id"
+
+        then:
+            response.statusCode == SC_NOT_FOUND
+
+        where:
+            name = newEntityName()
+            id   = newId()
+            data = [field: 'value']
+    }
+
+    def "cannot update an unknown entity"() {
+        given:
+            app([entity(name, [])])
+
+        when:
+            jsonPayload data
+            put "/api/$name/$id"
+
+        then:
+            response.statusCode == SC_NOT_FOUND
+
+        where:
+            name = newEntityName()
+            id   = newId()
+            data = [field: 'value']
+    }
+
+    def 'must supply an id in the url'() {
+        given:
+            app ([entity(name, [])])
+
+        when:
+            put "/api/$name"
+
+        then:
+            def errors = getJson(SC_BAD_REQUEST)
+            'id'    == errors[0].field.asText()
+            name    == errors[0].type.asText()
+            'must be specified in url by client' == errors[0].message.asText()
+            !errors[0].value
+
+        where:
+            name = newEntityName()
+    }
+
     def "updating a validating entity with invalid data returns a 400 bad request with error details"() {
         given:
             app ([entity(Car, [car])])

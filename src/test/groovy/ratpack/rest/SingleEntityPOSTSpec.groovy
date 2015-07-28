@@ -182,4 +182,18 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             data = [colour:'red']
     }
 
+    def "cannot add an entry to an unknown entity type"() {
+        given:
+            app()
+
+        when:
+            post "/api/$name"
+
+        then:
+            response.statusCode == SC_NOT_FOUND
+
+        where:
+            name = newEntityName()
+    }
+
 }

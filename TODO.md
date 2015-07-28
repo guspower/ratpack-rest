@@ -6,17 +6,17 @@
 
   * Unknown fields onto typed entity
   * Two level object [1-1]
-  * Create instance of unknown entity type
   * Create multiple instances
     * Some invalid
+  * [DONE] Create instance of unknown entity type
   * [DONE] POSTing with id (in url, in payload)
 
 ### PUT
 
-  * Update unknown entity id
-  * Update unknown entity type
   * Update multiple instances
     * Some invalid
+  * [DONE] Update unknown entity id
+  * [DONE] Update unknown entity type
     
 ### Performance
 

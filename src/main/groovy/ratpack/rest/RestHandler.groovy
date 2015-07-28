@@ -93,6 +93,8 @@ class RestHandler implements Handler {
     private void putAll(Context context) {
         if (isJsonRequest(context)) {
             def data = context.parse(fromJson(entity.store.type))
+        } else {
+            validationResponse context, ConstraintFailure.noClientSuppliedId(entity.name)
         }
     }
 
