@@ -104,6 +104,9 @@ class RestHandler implements Handler {
         def data
         if(isJsonRequest(context)) {
             data = context.parse(fromJson(entity.store.type))
+            if(data.id) {
+                post data.id, context
+            }
         }
 
         try {

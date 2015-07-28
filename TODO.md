@@ -4,12 +4,12 @@
 
 ### POST
 
-  * POSTing with id (in url [DONE], in payload)
   * Unknown fields onto typed entity
   * Two level object [1-1]
   * Create instance of unknown entity type
   * Create multiple instances
     * Some invalid
+  * [DONE] POSTing with id (in url, in payload)
 
 ### PUT
 

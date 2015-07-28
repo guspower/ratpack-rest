@@ -85,6 +85,26 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             id   = newId()
     }
 
+    def "cannot add a new entity with an id supplied in the payload"() {
+        given:
+            app ([entity(name, [])])
+
+        when:
+            jsonPayload data
+            post "/api/$name"
+
+        then:
+            def errors = getJson(SC_BAD_REQUEST)
+            'id'    == errors[0].field.asText()
+            name    == errors[0].type.asText()
+            'cannot be specified by client' == errors[0].message.asText()
+            data.id == errors[0].value.asText()
+
+        where:
+            name = newEntityName()
+            data = [id: newId(), field: 'value']
+    }
+
     def "can add a new typed entity and retrieve it"() {
         given:
             app ([entity(Bus, [])])
