@@ -34,11 +34,7 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
         String id = UUID.randomUUID().toString()
         instance.id = id
 
-        Validator validator = Validation.buildDefaultValidatorFactory().validator
-        Set<ConstraintViolation> violations = validator.validate(instance)
-        if(violations) {
-            throw new ConstraintViolationException(violations)
-        }
+        validate instance
 
         store << instance
         id
@@ -78,11 +74,23 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
         if(update) {
             if(withoutId(update)) {
                 updated = apply(existing.clone(), update)
+                updated.id = id
+
+                validate updated
+
                 store.remove existing
                 store.add updated
             }
         }
         updated
+    }
+
+    private void validate(Object instance) {
+        Validator validator = Validation.buildDefaultValidatorFactory().validator
+        Set<ConstraintViolation> violations = validator.validate(instance)
+        if(violations) {
+            throw new ConstraintViolationException(violations)
+        }
     }
 
     private Map withoutId(Object data) {

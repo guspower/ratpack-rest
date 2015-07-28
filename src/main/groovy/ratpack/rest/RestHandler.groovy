@@ -50,29 +50,6 @@ class RestHandler implements Handler {
         context.render toJson(entity.store.all)
     }
 
-    private void put(Context context, String id) {
-        def data
-
-        if(entity.store.get(id)) {
-            if (isJsonRequest(context)) {
-                data = context.parse(fromJson(entity.store.type))
-                if (entity.store.update(id, data)) {
-                    context.clientError SC_ACCEPTED
-                } else {
-                    context.clientError SC_NOT_MODIFIED
-                }
-            } else {
-                context.clientError SC_NOT_MODIFIED
-            }
-        } else {
-            context.clientError SC_NOT_FOUND
-        }
-    }
-
-    private void putAll(Context context) {
-
-    }
-
     private void delete(Context context, String id) {
         deleteResponse context, entity.store.delete(id)
     }
@@ -84,11 +61,38 @@ class RestHandler implements Handler {
     private void deleteResponse(Context context, boolean deleted) {
         if(deleted) {
             context.with {
-                response.status(SC_NO_CONTENT)
+                response.status SC_NO_CONTENT
                 response.send()
             }
         } else {
-            context.clientError(SC_NOT_FOUND)
+            context.clientError SC_NOT_FOUND
+        }
+    }
+
+    private void put(Context context, String id) {
+        if(entity.store.get(id)) {
+            if (isJsonRequest(context)) {
+                def data = context.parse(fromJson(entity.store.type))
+                try {
+                    if (entity.store.update(id, data)) {
+                        context.clientError SC_ACCEPTED
+                    } else {
+                        context.clientError SC_NOT_MODIFIED
+                    }
+                } catch(ConstraintViolationException validation) {
+                    validationResponse context, validation
+                }
+            } else {
+                context.clientError SC_NOT_MODIFIED
+            }
+        } else {
+            context.clientError SC_NOT_FOUND
+        }
+    }
+
+    private void putAll(Context context) {
+        if (isJsonRequest(context)) {
+            def data = context.parse(fromJson(entity.store.type))
         }
     }
 
@@ -103,20 +107,24 @@ class RestHandler implements Handler {
 
             context.with {
                 response.headers.add 'location', "/api/${entity.name}/$id"
-                response.status(SC_CREATED)
+                response.status SC_CREATED
                 response.send()
             }
         } catch(ConstraintViolationException validation) {
-            context.with {
-                response.status(SC_BAD_REQUEST)
-                render toJson(ConstraintFailure.build(validation))
-            }
+            validationResponse context, validation
         }
 
     }
 
     private boolean isJsonRequest(Context context) {
         context.request.headers['content-type'] == 'application/json'
+    }
+
+    private void validationResponse(Context context, ConstraintViolationException validation) {
+        context.with {
+            response.status SC_BAD_REQUEST
+            render toJson(ConstraintFailure.build(validation))
+        }
     }
 
 }

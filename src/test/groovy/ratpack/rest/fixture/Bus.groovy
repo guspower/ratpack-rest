@@ -5,7 +5,7 @@ import groovy.transform.ToString
 
 @EqualsAndHashCode
 @ToString(includePackage = false, includeNames = true)
-class Bus {
+class Bus implements Cloneable {
 
     String id
     String name

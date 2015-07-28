@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull
 
 @EqualsAndHashCode
 @ToString(includePackage = false, includeNames = true)
-class Car {
+class Car implements Cloneable {
 
     String id
 

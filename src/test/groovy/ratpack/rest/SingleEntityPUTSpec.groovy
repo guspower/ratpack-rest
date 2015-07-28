@@ -1,5 +1,7 @@
 package ratpack.rest
 
+import ratpack.rest.fixture.Bus
+import ratpack.rest.fixture.Car
 import ratpack.rest.fixture.JsonHelper
 import ratpack.rest.fixture.RestDslSpec
 
@@ -80,83 +82,81 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
             data = [id: newId(), field1: 'value']
             newData = [field2: 'value2']
     }
-//
-//    def "can update an existing typed entity"() {
-//        given:
-//            app ([entity(Bus, [])])
-//
-//        when:
-//            jsonPayload data
-//            post "/api/$name"
-//
-//        then:
-//            201 == response.statusCode
-//            response.headers['location']
-//
-//        when:
-//            String id = idFromResponse
-//            get response.headers['location']
-//
-//        then:
-//            !json.array
-//            id == json.id.asText()
-//
-//            data.name   == json.name.asText()
-//            data.colour == json.colour.asText()
-//
-//        where:
-//            name = 'bus'
-//            data = [name:'419', colour:'red']
-//    }
-//
-//    def "can update a validating entity"() {
-//        given:
-//            app ([entity(Car, [])])
-//
-//        when:
-//            jsonPayload data
-//            post "/api/$name"
-//
-//        then:
-//            201 == response.statusCode
-//            response.headers['location']
-//
-//        when:
-//            String id = idFromResponse
-//            get response.headers['location']
-//
-//        then:
-//            !json.array
-//            id == json.id.asText()
-//
-//            data.manufacturer == json.manufacturer.asText()
-//            data.colour       == json.colour.asText()
-//
-//        where:
-//            name = 'car'
-//            data = [manufacturer:'Volvo', colour:'red']
-//    }
-//
-//    def "updating a validating entity with invalid data returns a 400 bad request with error details"() {
-//        given:
-//            app ([entity(Car, [])])
-//
-//        when:
-//            jsonPayload data
-//            post "/api/$name"
-//
-//        then:
-//            def errors = getJson(400)
-//            1 == errors.size()
-//            'manufacturer'    == errors[0].field.asText()
-//            'Car'             == errors[0].type.asText()
-//            'may not be null' == errors[0].message.asText()
-//            !errors[0].value
-//
-//        where:
-//            name = 'car'
-//            data = [colour:'red']
-//    }
+
+    def "can update an existing typed entity"() {
+        given:
+            app ([entity(Bus, [bus])])
+
+        when:
+            jsonPayload data
+            put "/api/$name/$bus.id"
+
+        then:
+            response.statusCode == SC_ACCEPTED
+
+        when:
+            get "/api/$name/${bus.id}"
+
+        then:
+            !json.array
+            bus.id      == json.id.asText()
+            data.name   == json.name.asText()
+            data.colour == json.colour.asText()
+
+        where:
+            name = 'bus'
+            bus  = new Bus(id: newId())
+            data = [name:'419', colour:'red']
+    }
+
+    def "can update a validating entity"() {
+        given:
+            app ([entity(Car, [car])])
+
+        when:
+            jsonPayload data
+            put "/api/$name/${car.id}"
+
+        then:
+            response.statusCode == SC_ACCEPTED
+
+        when:
+            get "/api/$name/${car.id}"
+
+        then:
+            !json.array
+            car.id == json.id.asText()
+
+            data.manufacturer == json.manufacturer.asText()
+            data.colour       == json.colour.asText()
+
+        where:
+            name = 'car'
+            car  = new Car(id: newId(), manufacturer: 'Renault')
+            data = [manufacturer:'Volvo', colour:'red']
+    }
+
+    def "updating a validating entity with invalid data returns a 400 bad request with error details"() {
+        given:
+            app ([entity(Car, [car])])
+
+        when:
+            jsonPayload data
+            put "/api/$name/${car.id}"
+
+        then:
+            def errors = getJson(SC_BAD_REQUEST)
+            1 == errors.size()
+            'manufacturer'    == errors[0].field.asText()
+            'Car'             == errors[0].type.asText()
+            'may not be null' == errors[0].message.asText()
+            !errors[0].value
+
+        where:
+            name = 'car'
+            car  = new Car(id: newId(), manufacturer: 'Volvo')
+            data = [manufacturer: null, colour:'red']
+    }
 //
 //    def "can update existing entities"() { //IS THIS A POST OR PUT? Maybe POST SHOULD FAIL IF THERE ARE EXISTING?
 //        // AND PUT SHOULD FAIL IF ANY OF THE ENTITES BEING UPDATED DO NOT EXIST?
