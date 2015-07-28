@@ -1,6 +1,7 @@
 package ratpack.rest.fixture
 
 import ratpack.jackson.guice.JacksonModule
+import ratpack.rest.DefaultRestEntity
 import ratpack.rest.RestEntity
 import ratpack.rest.RestHandlers
 import ratpack.rest.RestModule
@@ -14,7 +15,7 @@ class RestDslSpec extends RatpackGroovyDslSpec {
         app([])
     }
 
-    void app(List<RestEntity> entities) {
+    void app(List<DefaultRestEntity> entities) {
         bindings {
             module JacksonModule
             module RestModule, { RestModule.Config config ->
@@ -31,11 +32,11 @@ class RestDslSpec extends RatpackGroovyDslSpec {
     }
 
     RestEntity entity(String name, List data) {
-        new RestEntity(name, store(HashMap.class, data))
+        new DefaultRestEntity(name, store(HashMap.class, data))
     }
 
     RestEntity entity(Class type, List data) {
-        new RestEntity(type, store(type, data))
+        new DefaultRestEntity(type, store(type, data))
     }
 
     String newEntityName() {

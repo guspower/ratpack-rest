@@ -11,10 +11,10 @@ class RestModule extends ConfigurableModule<RestModule.Config> {
     @ToString(includePackage = false, includeNames = true)
     static class Config {
 
-        List<RestEntity> entities = []
+        List<DefaultRestEntity> entities = []
 
         @Provides
-        List<RestEntity> restEntities() {
+        List<DefaultRestEntity> restEntities() {
             entities
         }
 

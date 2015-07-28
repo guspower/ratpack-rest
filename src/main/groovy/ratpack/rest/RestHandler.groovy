@@ -13,9 +13,9 @@ import static org.apache.http.HttpStatus.*
 @Slf4j
 class RestHandler implements Handler {
 
-    private RestEntity entity
+    private DefaultRestEntity entity
 
-    RestHandler(RestEntity entity)  {
+    RestHandler(DefaultRestEntity entity)  {
         this.entity = entity
     }
 
