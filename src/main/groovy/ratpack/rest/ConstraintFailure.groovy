@@ -14,6 +14,21 @@ class ConstraintFailure {
         }
     }
 
+    static List<ConstraintFailure> clientSuppliedId(String name, String id) {
+        [new ConstraintFailure(
+            field:   'id',
+            value:   id,
+            type:    name,
+            message: 'cannot be specified by client'
+        )]
+    }
+
+    ConstraintFailure(Map data) {
+        data.each { key, value ->
+            this."$key" = value
+        }
+    }
+
     ConstraintFailure(ConstraintViolation violation) {
         this.field   = violation.propertyPath
         this.value   = violation.invalidValue

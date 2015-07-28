@@ -28,7 +28,7 @@ class RestHandler implements Handler {
             if(request.method.get) {
                 id ? get(context, id) : getAll(context)
             } else if(request.method.post) {
-                post context
+                id ? post(id, context) : post(context)
             } else if(request.method.delete) {
                 id ? delete(context, id) : deleteAll(context)
             } else if(request.method.put) {
@@ -80,7 +80,7 @@ class RestHandler implements Handler {
                         context.clientError SC_NOT_MODIFIED
                     }
                 } catch(ConstraintViolationException validation) {
-                    validationResponse context, validation
+                    validationResponse context, ConstraintFailure.build(validation)
                 }
             } else {
                 context.clientError SC_NOT_MODIFIED
@@ -94,6 +94,10 @@ class RestHandler implements Handler {
         if (isJsonRequest(context)) {
             def data = context.parse(fromJson(entity.store.type))
         }
+    }
+
+    private void post(String id, Context context) {
+        validationResponse context, ConstraintFailure.clientSuppliedId(entity.name, id)
     }
 
     private void post(Context context) {
@@ -111,7 +115,7 @@ class RestHandler implements Handler {
                 response.send()
             }
         } catch(ConstraintViolationException validation) {
-            validationResponse context, validation
+            validationResponse context, ConstraintFailure.build(validation)
         }
 
     }
@@ -120,10 +124,10 @@ class RestHandler implements Handler {
         context.request.headers['content-type'] == 'application/json'
     }
 
-    private void validationResponse(Context context, ConstraintViolationException validation) {
+    private void validationResponse(Context context, List<ConstraintFailure> failures) {
         context.with {
             response.status SC_BAD_REQUEST
-            render toJson(ConstraintFailure.build(validation))
+            render toJson(failures)
         }
     }
 

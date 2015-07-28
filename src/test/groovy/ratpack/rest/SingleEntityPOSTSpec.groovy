@@ -49,7 +49,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             post "/api/$name"
 
         then:
-            201 == response.statusCode
+            response.statusCode == SC_CREATED
             response.headers['location']
 
         when:
@@ -64,6 +64,25 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
         where:
             name = newEntityName()
             data = [field1:'data1', field2:'data2']
+    }
+
+    def "cannot add a new entity with an id supplied in the url"() {
+        given:
+            app ([entity(name, [])])
+
+        when:
+            post "/api/$name/$id"
+
+        then:
+            def errors = getJson(SC_BAD_REQUEST)
+            'id'    == errors[0].field.asText()
+            name    == errors[0].type.asText()
+            'cannot be specified by client' == errors[0].message.asText()
+            id      == errors[0].value.asText()
+
+        where:
+            name = newEntityName()
+            id   = newId()
     }
 
     def "can add a new typed entity and retrieve it"() {
