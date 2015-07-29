@@ -4,10 +4,11 @@
 
 ### POST
 
-  * Unknown fields onto typed entity
   * Two level object [1-1]
   * Create multiple instances
     * Some invalid
+    * Some pre existing
+  * [DONE] Unknown fields onto typed entity. NOTE: no sensible way of getting multiple errors back w/out newing up an ObjectMapper per request
   * [DONE] Create instance of unknown entity type
   * [DONE] POSTing with id (in url, in payload)
 
@@ -15,6 +16,8 @@
 
   * Update multiple instances
     * Some invalid
+    * Some not found
+  * [DONE] Unknown fields onto typed entity
   * [DONE] Update unknown entity id
   * [DONE] Update unknown entity type
     
@@ -33,10 +36,12 @@
   
 ### RestEntity
 
-  * Make interface and default impl
+  * [DONE] Make interface and default impl
   
 ### EntityStore
 
   * Optional versioning
   * Optional state machine
+  * Plugable identity strategy
+  * Custom validation (e.g. unique name)
   

@@ -1,5 +1,6 @@
 package ratpack.rest
 
+import com.fasterxml.jackson.databind.JsonMappingException
 import groovy.transform.ToString
 
 import javax.validation.ConstraintViolation
@@ -8,10 +9,18 @@ import javax.validation.ConstraintViolationException
 @ToString(includePackage = false, includeNames = true)
 class ConstraintFailure {
 
-    static List<ConstraintFailure> build(ConstraintViolationException exception) {
+    static List<ConstraintFailure> constraintViolation(ConstraintViolationException exception) {
         exception.constraintViolations.collect { ConstraintViolation violation ->
             new ConstraintFailure(violation)
         }
+    }
+
+    static List<ConstraintFailure> jsonMapping(JsonMappingException exception, RestEntity entity) {
+        [new ConstraintFailure(
+            field:   exception.path[-1].fieldName,
+            type:    entity.name,
+            message: exception.message.substring(0, exception.message.indexOf('(')).trim()
+        )]
     }
 
     static List<ConstraintFailure> clientSuppliedId(String name, String id) {

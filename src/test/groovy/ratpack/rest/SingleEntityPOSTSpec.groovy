@@ -133,6 +133,37 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             data = [name:'419', colour:'red']
     }
 
+    def "cannot add a new typed entity with unknown fields"() {
+        given:
+            app ([entity(Bus, [])])
+
+        when:
+            jsonPayload data
+            post "/api/$name"
+
+        then:
+            def errors = getJson(SC_BAD_REQUEST)
+
+        and:
+            'hairstyle'                      == errors[0].field.asText()
+            name                             == errors[0].type.asText()
+            'Unrecognized field "hairstyle"' == errors[0].message.asText()
+            !errors[0].value
+
+//  Implementing multiple error reporting is not straightforward as the JacksonModule declares ObjectMappers as a singleton,
+//  making the addListener() approach non-request/thread safe. Currently we just catch the first exception and return that.
+//
+//        and:
+//            'fish'          == errors[0].field.asText()
+//            name            == errors[0].type.asText()
+//            'unknown field' == errors[0].message.asText()
+//            data.fish       == errors[0].value.asText()
+
+        where:
+            name = 'bus'
+            data = [hairstyle:'red', fish:'hake']
+    }
+
     def "can add a valid validating entity"() {
         given:
             app ([entity(Car, [])])

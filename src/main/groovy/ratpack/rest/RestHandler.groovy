@@ -1,5 +1,6 @@
 package ratpack.rest
 
+import com.fasterxml.jackson.databind.JsonMappingException
 import groovy.util.logging.Slf4j
 import ratpack.handling.Context
 import ratpack.handling.Handler
@@ -21,7 +22,6 @@ class RestHandler implements Handler {
 
     @Override
     void handle(Context context) throws Exception {
-
         context.with {
             String id = pathTokens.id
 
@@ -72,15 +72,17 @@ class RestHandler implements Handler {
     private void put(Context context, String id) {
         if(entity.store.get(id)) {
             if (isJsonRequest(context)) {
-                def data = context.parse(fromJson(entity.store.type))
                 try {
+                    def data = context.parse(fromJson(entity.store.type))
                     if (entity.store.update(id, data)) {
                         context.clientError SC_ACCEPTED
                     } else {
                         context.clientError SC_NOT_MODIFIED
                     }
                 } catch(ConstraintViolationException validation) {
-                    validationResponse context, ConstraintFailure.build(validation)
+                    validationResponse context, ConstraintFailure.constraintViolation(validation)
+                } catch(JsonMappingException deserialization) {
+                    validationResponse context, ConstraintFailure.jsonMapping(deserialization, entity)
                 }
             } else {
                 context.clientError SC_NOT_MODIFIED
@@ -105,24 +107,28 @@ class RestHandler implements Handler {
     private void post(Context context) {
         def data
         if(isJsonRequest(context)) {
-            data = context.parse(fromJson(entity.store.type))
-            if(data.id) {
-                post data.id, context
+            try {
+                data = context.parse(fromJson(entity.store.type))
+            } catch(JsonMappingException deserialization) {
+                validationResponse context, ConstraintFailure.jsonMapping(deserialization, entity)
             }
         }
 
-        try {
-            String id = entity.store.create(data)
+        if (data?.id) {
+            post data.id, context
+        } else {
+            try {
+                String id = entity.store.create(data)
 
-            context.with {
-                response.headers.add 'location', "/api/${entity.name}/$id"
-                response.status SC_CREATED
-                response.send()
+                context.with {
+                    response.headers.add 'location', "/api/${entity.name}/$id"
+                    response.status SC_CREATED
+                    response.send()
+                }
+            } catch(ConstraintViolationException validation) {
+                validationResponse context, ConstraintFailure.constraintViolation(validation)
             }
-        } catch(ConstraintViolationException validation) {
-            validationResponse context, ConstraintFailure.build(validation)
         }
-
     }
 
     private boolean isJsonRequest(Context context) {
