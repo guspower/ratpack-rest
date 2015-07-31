@@ -4,7 +4,6 @@
 
 ### POST
 
-  * Two level object [1-1]
   * Create multiple instances
     * Some invalid
     * Some pre existing
@@ -23,7 +22,7 @@
     
 ### Performance
 
-  * Throughput benchmark
+  * Throughput micro-benchmark [GET - DONE]
   * Concurrency test
   * Blocking test - slow store
     

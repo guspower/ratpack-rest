@@ -27,23 +27,23 @@ class RestDslSpec extends RatpackGroovyDslSpec {
         }
     }
 
-    EntityStore store(Class type, List data) {
+    static EntityStore store(Class type, List data) {
         data ? new InMemoryEntityStore(type, data) : new InMemoryEntityStore(type)
     }
 
-    RestEntity entity(String name, List data) {
+    static RestEntity entity(String name, List data) {
         new DefaultRestEntity(name, store(HashMap.class, data))
     }
 
-    RestEntity entity(Class type, List data) {
+    static RestEntity entity(Class type, List data) {
         new DefaultRestEntity(type, store(type, data))
     }
 
-    String newEntityName() {
+    static String newEntityName() {
         "entity-${UUID.randomUUID()}"
     }
 
-    String newId() {
+    static String newId() {
         UUID.randomUUID().toString()
     }
 
