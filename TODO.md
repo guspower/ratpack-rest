@@ -44,3 +44,9 @@
   * Plugable identity strategy
   * Custom validation (e.g. unique name)
   
+### Test Code
+
+  * Remove duplication between micro benchmarks and RestDSLSpec
+  * Stop benchmarks running out of file handles
+  * [DONE] Write report out to a file based on environment
+  * [DONE] Include runtime memory and system details in report

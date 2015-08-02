@@ -112,6 +112,10 @@ bintray {
 
 }
 
+test.doFirst {
+    test.jvmArgs += ["-Dtest.report.dir=${testReportDir.absolutePath}"]
+}
+
 String calculateVersion(String version) {
     String result = version
     if(version.endsWith('SNAPSHOT')) {

@@ -64,12 +64,13 @@ class MicroBenchmarkSpec extends Specification {
     RequestGenerator generator
 
     def setup() {
-        generator = new RequestGenerator()
+        String name = "${this.class.simpleName}-${specificationContext.currentFeature.name}".replaceAll('\\W', '-')
+        generator = new RequestGenerator(name, testDuration)
     }
 
     def cleanup() {
-        application.close()
-        println generator.report()
+        application.server.stop()
+        generator.report()
     }
 
     EmbeddedApp app(List<DefaultRestEntity> entities) {
@@ -95,7 +96,7 @@ class MicroBenchmarkSpec extends Specification {
             app([RestDslSpec.entity(name, data)])
 
         when:
-            Thread thread = generator.run("${application.address}api/$name/$id", testDuration)
+            Thread thread = generator.run("${application.address}api/$name/$id")
 
         then:
             thread.join()
@@ -111,7 +112,7 @@ class MicroBenchmarkSpec extends Specification {
             app([RestDslSpec.entity(name, data)])
 
         when:
-            Thread thread = generator.run("${application.address}api/$name/${data[0].id}", testDuration)
+            Thread thread = generator.run("${application.address}api/$name/${data[0].id}")
 
         then:
             thread.join()
