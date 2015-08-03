@@ -24,6 +24,8 @@ class RequestGenerator {
     int threadCount = 25
     int duration
 
+    Map<String, String> before, after
+
     RequestGenerator(String name, int duration) {
         this.name     = name
         this.duration = duration
@@ -41,7 +43,8 @@ class RequestGenerator {
     }
 
     Thread run(String url) {
-        start = System.currentTimeMillis()
+        start()
+
         Thread.start {
             GParsPool.withPool threadCount, {
                 threadCount.times { int index ->
@@ -49,15 +52,22 @@ class RequestGenerator {
                 }
             }
         }
+
         Thread.start {
             Thread.sleep duration
             stop()
         }
     }
 
-    void stop() {
+    private void start() {
+        start = System.currentTimeMillis()
+        before = systemInfo
+    }
+
+    private void stop() {
         run.set false
         end = System.currentTimeMillis()
+        after = systemInfo
     }
 
     void report() {
@@ -102,7 +112,7 @@ class RequestGenerator {
         ]
     }
 
-    private static Map sys() {
+    private Map sys() {
         def system = System.properties
 
         [
@@ -110,12 +120,16 @@ class RequestGenerator {
                 memory: [
                     total: Runtime.runtime.totalMemory(),
                     free:  Runtime.runtime.freeMemory(),
-                    max:   Runtime.runtime.maxMemory(),
+                    max:   Runtime.runtime.maxMemory()
                 ],
                 name: InetAddress.localHost.hostName,
                 os: [
                     name:    system.'os.name',
                     version: system.'os.version'
+                ],
+                stat: [
+                    before: before,
+                    after: after
                 ]
             ],
             vm: [
@@ -125,6 +139,20 @@ class RequestGenerator {
                 vendor:  system.'java.vm.vendor'
             ]
         ]
+    }
+
+    private static Map getSystemInfo() {
+        [
+            disk:   getSystemInfo('/proc/diskstats'),
+            system: getSystemInfo('/proc/stat'),
+            memory: getSystemInfo('/proc/meminfo'),
+            vm:     getSystemInfo('/proc/vmstat')
+        ]
+    }
+
+    private static String getSystemInfo(String name) {
+        def file = new File(name)
+        (file.exists() && file.canRead()) ? file.text : ''
     }
 
 }
