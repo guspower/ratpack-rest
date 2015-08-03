@@ -1,6 +1,7 @@
 package ratpack.rest.fixture
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.SerializationFeature
 import groovy.transform.ToString
 import groovyx.gpars.GParsPool
 import jodd.http.HttpRequest
@@ -61,6 +62,7 @@ class RequestGenerator {
 
     void report() {
         def mapper = new ObjectMapper()
+        mapper.enable SerializationFeature.INDENT_OUTPUT
 
         String data = mapper.writeValueAsString (results() + sys())
         String reportDirPath = System.properties.getProperty(REPORT_DIR_KEY)
