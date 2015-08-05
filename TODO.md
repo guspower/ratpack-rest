@@ -22,7 +22,7 @@
     
 ### Performance
 
-  * Throughput micro-benchmark [GET - DONE]
+  * Throughput micro-benchmark [GET - single entity DONE, change to spread across multiple entities]
   * Concurrency test
   * Blocking test - slow store
     
@@ -43,10 +43,12 @@
   * Optional state machine
   * Plugable identity strategy
   * Custom validation (e.g. unique name)
+  * JDBC implementation w/ connection pool and h2/hsqldb
+  * Neo4j implementation
   
 ### Test Code
 
   * Remove duplication between micro benchmarks and RestDSLSpec
-  * Stop benchmarks running out of file handles
+  * [DONE] Stop benchmarks running out of file handles
   * [DONE] Write report out to a file based on environment
   * [DONE] Include runtime memory and system details in report

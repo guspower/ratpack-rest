@@ -2,88 +2,66 @@ package ratpack.rest.fixture
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
-import groovy.transform.ToString
-import groovyx.gpars.GParsPool
-import jodd.http.HttpRequest
 
-import java.util.concurrent.atomic.AtomicBoolean
-import java.util.concurrent.atomic.AtomicInteger
-
-@ToString(includePackage = false, includeNames = true)
-class RequestGenerator {
+class Benchmark {
 
     final String REPORT_DIR_KEY = 'test.report.dir'
+    final String name
 
-    long start
-    long end
-    AtomicBoolean run = new AtomicBoolean(true)
-    AtomicInteger success = new AtomicInteger(0)
-    AtomicInteger failure = new AtomicInteger(0)
-
-    String name
-    int threadCount = 25
-    int duration
+    long duration, threads
+    long start, end
+    long success, failure
 
     Map<String, String> before, after
 
-    RequestGenerator(String name, int duration) {
-        this.name     = name
+    Benchmark(String name) {
+        this.name = name
+    }
+
+    void start(long duration, long threads) {
         this.duration = duration
-    }
+        this.threads = threads
 
-    Closure getUrl = { AtomicBoolean keepGoing, String url, int index ->
-        while(keepGoing.get()) {
-            int statusCode = HttpRequest.get(url).send().statusCode()
-            if((statusCode > 100) && (statusCode < 400)) {
-                success.incrementAndGet()
-            } else {
-                failure.incrementAndGet()
-            }
-        }
-    }
-
-    Thread run(String url) {
-        start()
-
-        Thread.start {
-            GParsPool.withPool threadCount, {
-                threadCount.times { int index ->
-                    GParsPool.executeAsync(getUrl.curry(run, url, index))
-                }
-            }
-        }
-
-        Thread.start {
-            Thread.sleep duration
-            stop()
-        }
-    }
-
-    private void start() {
         start = System.currentTimeMillis()
         before = systemInfo
     }
 
-    private void stop() {
-        run.set false
+    void stop(long success, long failure) {
+        this.success = success
+        this.failure = failure
+
         end = System.currentTimeMillis()
         after = systemInfo
     }
 
     void report() {
-        def mapper = new ObjectMapper()
-        mapper.enable SerializationFeature.INDENT_OUTPUT
+        String data = asJson()
 
-        String data = mapper.writeValueAsString (results() + sys())
-        String reportDirPath = System.properties.getProperty(REPORT_DIR_KEY)
-        if(reportDirPath) {
-            def reportDir = new File(reportDirPath)
-            reportDir.mkdirs()
+        File reportDir = findReportDir()
+        if(reportDir && reportDir.exists()) {
             def report = new File(reportDir, "$name-${System.currentTimeMillis()}.json")
             if(report.createNewFile()) { report.text = data }
         } else {
             println data
         }
+    }
+
+    private String asJson() {
+        def mapper = new ObjectMapper()
+        mapper.enable SerializationFeature.INDENT_OUTPUT
+
+        mapper.writeValueAsString (results() + sys())
+    }
+
+    private File findReportDir() {
+        File reportDir
+        String reportDirPath = System.properties.getProperty(REPORT_DIR_KEY)
+        if(reportDirPath) {
+            reportDir = new File(reportDirPath)
+            reportDir.mkdirs()
+        }
+
+        reportDir
     }
 
     private Map results() {
@@ -96,10 +74,10 @@ class RequestGenerator {
                     duration: (end - start)
                 ],
                 requests: [
-                    success:  success.get(),
-                    failure:  failure.get(),
-                    total:    (success.get() + failure.get()),
-                    average:  Math.round(((success.get() + failure.get()) / ((end - start) / 1000)))
+                    success:  success,
+                    failure:  failure,
+                    total:    (success + failure),
+                    average:  Math.round(((success + failure) / ((end - start) / 1000)))
                 ]
             ]
         ]
@@ -108,7 +86,8 @@ class RequestGenerator {
     private Map config() {
         [
             duration: duration,
-            threads:  threadCount
+            name:     name,
+            threads:  threads
         ]
     }
 
@@ -156,5 +135,3 @@ class RequestGenerator {
     }
 
 }
-
-

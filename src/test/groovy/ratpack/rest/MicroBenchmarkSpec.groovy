@@ -1,52 +1,73 @@
 package ratpack.rest
 
 import ratpack.rest.fixture.Bus
+import ratpack.rest.fixture.EntityFixture
+import ratpack.rest.fixture.HttpFixture
 import ratpack.rest.fixture.OnDemandApplicationSpec
-import ratpack.rest.fixture.RequestGenerator
+import ratpack.rest.fixture.RequestRunner
 import ratpack.rest.fixture.RestDslSpec
 
 class MicroBenchmarkSpec extends OnDemandApplicationSpec {
 
-    int testDuration = 5000
-    RequestGenerator generator
+    static final int testDuration = 5000
+    static final int numberOfEntities = 500
+    RequestRunner runner
 
     def setup() {
-        generator = new RequestGenerator(currentTestName(), testDuration)
+        runner = new RequestRunner(currentTestName(), testDuration)
     }
 
     def cleanup() {
-        generator.report()
+        runner.benchmark.report()
     }
 
     def "GET - untyped entity"() {
         given:
-            app([RestDslSpec.entity(name, data)])
+            def entityFixture = new EntityFixture<HashMap>(numberOfEntities, type, config)
+
+        and:
+            app([RestDslSpec.entity(name, entityFixture.data)])
+
+        and:
+            def httpFixture = new HttpFixture<HashMap>("${application.address}api/$name", entityFixture)
 
         when:
-            Thread thread = generator.run("${application.address}api/$name/$id")
+            Thread thread = runner.run(httpFixture)
 
         then:
             thread.join()
 
         where:
-            name = RestDslSpec.newEntityName()
-            data = [[field:'value1', id:'other'], [field:'value2', id:'expected']]
-            id   = 'expected'
+            name   = RestDslSpec.newEntityName()
+            type   = HashMap
+            config = { it.field = "field-${it.id}".toString() }
     }
 
     def "GET - typed entity"() {
         given:
-            app([RestDslSpec.entity(name, data)])
+            def entityFixture = new EntityFixture<Bus>(numberOfEntities, type, { Bus bus ->
+                bus.colour = 'red'
+                bus.name = bus.id
+            })
+
+        and:
+            app([RestDslSpec.entity(name, entityFixture.data)])
+
+        and:
+            def httpFixture = new HttpFixture<Bus>("${application.address}api/$name", entityFixture)
 
         when:
-            Thread thread = generator.run("${application.address}api/$name/${data[0].id}")
+            Thread thread = runner.run(httpFixture)
 
         then:
             thread.join()
 
         where:
+            type = Bus
             name = RestDslSpec.newEntityName()
-            data = [new Bus(id: RestDslSpec.newId(), colour: 'green', name: 'Fred')]
+            config = { Bus bus -> bus.colour = 'red'; bus.name = bus.id }
     }
 
 }
+
+
