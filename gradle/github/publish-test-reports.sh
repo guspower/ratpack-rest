@@ -8,8 +8,14 @@ git config -l
 git config --global user.email "gus@energizedwork.com"
 git config --global user.name "travis"
 
+git remote add upstream https://${GH_TOKEN}@github.com/${REPO}.git > /dev/null
+git fetch -qn upstream > /dev/null
+
+find .
+
 if [ "$TRAVIS_BRANCH" == "master" ]; then
     git checkout gh-pages
+    find .
     git add -A -f build/reports
     git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
     git push https://${GH_TOKEN}@github.com/${REPO} gh-pages > /dev/null
