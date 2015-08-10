@@ -25,6 +25,7 @@
   * Throughput micro-benchmark [GET - single entity DONE, change to spread across multiple entities]
   * Concurrency test
   * Blocking test - slow store
+  * Integrate coda hale metrics into benchmark reporting
     
 ## Code
 

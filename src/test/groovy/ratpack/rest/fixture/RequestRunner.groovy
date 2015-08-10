@@ -35,7 +35,7 @@ class RequestRunner {
         }
     }
 
-    Thread run(HttpFixture httpFixture) {
+    void run(HttpFixture httpFixture) {
         start()
 
         Thread.start {
@@ -48,13 +48,16 @@ class RequestRunner {
             }
         }
 
-        Thread.start {
+        Thread control = Thread.start {
             Thread.sleep duration
             stop()
         }
+
+        control.join()
     }
 
     private void start() {
+        run.set true
         benchmark.start duration, threadCount
     }
 

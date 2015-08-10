@@ -6,15 +6,16 @@ import ratpack.rest.fixture.HttpFixture
 import ratpack.rest.fixture.OnDemandApplicationSpec
 import ratpack.rest.fixture.RequestRunner
 import ratpack.rest.fixture.RestDslSpec
+import spock.lang.Shared
 
 class MicroBenchmarkSpec extends OnDemandApplicationSpec {
 
-    static final int testDuration = 5000
-    static final int numberOfEntities = 500
+    @Shared MicroBenchmarkSettings settings = new MicroBenchmarkSettings()
+
     RequestRunner runner
 
     def setup() {
-        runner = new RequestRunner(currentTestName(), testDuration)
+        runner = new RequestRunner(currentTestName(), settings.duration)
     }
 
     def cleanup() {
@@ -23,7 +24,7 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
 
     def "GET - untyped entity"() {
         given:
-            def entityFixture = new EntityFixture<HashMap>(numberOfEntities, type, config)
+            def entityFixture = new EntityFixture<HashMap>(settings.numberOfEntities, type, config)
 
         and:
             app([RestDslSpec.entity(name, entityFixture.data)])
@@ -32,10 +33,11 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
             def httpFixture = new HttpFixture<HashMap>("${application.address}api/$name", entityFixture)
 
         when:
-            Thread thread = runner.run(httpFixture)
+            runner.run(httpFixture)
 
         then:
-            thread.join()
+            settings.acceptableSuccessRate < runner.benchmark.successRate
+            settings.acceptableThroughput  < runner.benchmark.throughput
 
         where:
             name   = RestDslSpec.newEntityName()
@@ -45,7 +47,7 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
 
     def "GET - typed entity"() {
         given:
-            def entityFixture = new EntityFixture<Bus>(numberOfEntities, type, { Bus bus ->
+            def entityFixture = new EntityFixture<Bus>(settings.numberOfEntities, type, { Bus bus ->
                 bus.colour = 'red'
                 bus.name = bus.id
             })
@@ -57,15 +59,26 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
             def httpFixture = new HttpFixture<Bus>("${application.address}api/$name", entityFixture)
 
         when:
-            Thread thread = runner.run(httpFixture)
+            runner.run(httpFixture)
 
         then:
-            thread.join()
+            settings.acceptableSuccessRate < runner.benchmark.successRate
+            settings.acceptableThroughput  < runner.benchmark.throughput
 
         where:
             type = Bus
             name = RestDslSpec.newEntityName()
             config = { Bus bus -> bus.colour = 'red'; bus.name = bus.id }
+    }
+
+    final class MicroBenchmarkSettings {
+
+        int duration = 5000
+        int numberOfEntities = 500
+
+        int acceptableSuccessRate = 99
+        int acceptableThroughput  = 100
+
     }
 
 }

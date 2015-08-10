@@ -34,6 +34,22 @@ class Benchmark {
         after = systemInfo
     }
 
+    float getSuccessRate() {
+        asPercentage success, (success + failure)
+    }
+
+    float getFailureRate() {
+        asPercentage failure, (success + failure)
+    }
+
+    int getThroughput() {
+        Math.round(((success + failure) / (actualDuration / 1000)))
+    }
+
+    long getActualDuration() {
+        end - start
+    }
+
     void report() {
         String data = asJson()
 
@@ -71,13 +87,13 @@ class Benchmark {
                 time: [
                     start:    start,
                     end:      end,
-                    duration: (end - start)
+                    duration: actualDuration
                 ],
                 requests: [
                     success:  success,
                     failure:  failure,
                     total:    (success + failure),
-                    average:  Math.round(((success + failure) / ((end - start) / 1000)))
+                    average:  throughput
                 ]
             ]
         ]
@@ -132,6 +148,10 @@ class Benchmark {
     private static String getSystemInfo(String name) {
         def file = new File(name)
         (file.exists() && file.canRead()) ? file.text : ''
+    }
+
+    private static float asPercentage(long value, long total) {
+        Math.round((value * 100 * 100) / total) / 100
     }
 
 }
