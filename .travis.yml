@@ -1,3 +1,14 @@
 language: groovy
 jdk:
   - oraclejdk8
+
+env:
+  global:
+    - secure: "3rfLfjEP6mKFsJgrsb0ft5BcpFu/VfTcmG3S2dDSUYdJqUZ4WPvgn7SQS6d34oSqwMhrjRq8QAIxZe9QanXrwUA+ScoD92j8r2Ia6wEvejyKA8Z+z+lUhMN2hkhDdjThyIZeSp1fjANRL/72nD9ItSsB1g1+NHyJ6+39GPPQhqJSSpFJ47UT8QJDAgq3lurvi4UJOI6nBo+pI0DEYrT8bC5gdA4wlB9PY7fdP9gHp7QtxRWc2iJ8CT+5AtSaC/SFCQo2PTWtWIw/jgiND2tVMfAsBwImlOmjARUoGj4iiX12VY27aSMKbt8bNTC841Xpdf4bNdAVFYCu0fYDXx3EkCIuKJ2Hsz3UTfA6YNemsCpmrup2ZEea7JE1rRcO6YlckfKMcl84jfQ6Itur1K346Ci5unhzdOyBl49l3i9xlvPiujTfsXQbV8aXHnlEs6KcFol4OEBQmq67TFybEdW/2fh37UULp8QtzhUb5HGenXZRka8SqKi+579SfPPXaN4W3MpjRAy+NWN3W9z9xyaA/OX8IRW7CYTpejHUeb6x9UyVn2IPbUVRCRy4+gjD+MkC0n+JnaFcFQR3webdcuYV/Ac1ExmobHjoZgwe+NlFqMBV/oBXgAI8YCbwHr6t5nSKjEzi2R3WDeno5WNZ/aRTmgGUx54vlv7ieiDP4tkKTTw="
+
+branches:
+  except:
+    - gh-pages
+
+script:
+  - bash gradle/github/publish-test-reports.sh
