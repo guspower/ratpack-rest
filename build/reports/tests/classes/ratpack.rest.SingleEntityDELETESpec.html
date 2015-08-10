@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class ratpack.rest.SingleEntityDELETESpec</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class ratpack.rest.SingleEntityDELETESpec</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/ratpack.rest.html">ratpack.rest</a> &gt; SingleEntityDELETESpec</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">4</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">5.153s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">delete all entities</td>
+<td>1.586s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">delete single entity</td>
+<td>1.601s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">returns 404 for delete unknown entity</td>
+<td>1.225s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">returns 404 for delete unknown entity type</td>
+<td>0.741s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>14:51:27.734 [ratpack-compute-9-20] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-20
+14:51:27.734 [ratpack-compute-9-21] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-21
+14:51:27.734 [ratpack-compute-9-22] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-22
+14:51:27.734 [ratpack-compute-9-8] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-8
+14:51:27.734 [ratpack-compute-9-6] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-6
+14:51:27.734 [ratpack-compute-9-7] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-7
+14:51:27.734 [ratpack-compute-9-10] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-10
+14:51:27.734 [ratpack-compute-9-9] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-9
+14:51:27.734 [ratpack-compute-9-12] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-12
+14:51:27.735 [ratpack-compute-9-11] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-11
+14:51:27.735 [ratpack-compute-9-13] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-13
+14:51:27.735 [ratpack-compute-9-29] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-29
+14:51:27.735 [ratpack-compute-9-30] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-30
+14:51:27.735 [ratpack-compute-9-14] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-14
+14:51:27.735 [ratpack-compute-9-15] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-15
+14:51:27.735 [ratpack-compute-9-31] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-31
+14:51:27.735 [ratpack-compute-9-18] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-18
+14:51:27.735 [ratpack-compute-9-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-1
+14:51:27.735 [ratpack-compute-9-2] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-2
+14:51:27.735 [ratpack-compute-9-16] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-16
+14:51:27.736 [ratpack-compute-9-24] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-24
+14:51:27.736 [ratpack-compute-9-32] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-32
+14:51:27.736 [ratpack-compute-9-25] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-25
+14:51:27.736 [ratpack-compute-9-19] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-19
+14:51:27.746 [ratpack-compute-9-3] ERROR i.n.u.c.D.rejectedExecution - Failed to submit a listener notification task. Event loop shut down?
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:672) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:264) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:655) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.DefaultPromise.execute(DefaultPromise.java:671) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.DefaultPromise.notifyLateListener(DefaultPromise.java:641) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.DefaultPromise.addListener(DefaultPromise.java:138) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:93) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:28) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:251) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.778 [ratpack-compute-9-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-5
+14:51:27.810 [ratpack-compute-9-26] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-26
+14:51:27.736 [ratpack-compute-9-17] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-17
+14:51:27.810 [ratpack-compute-9-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-4
+14:51:27.810 [ratpack-compute-9-23] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-23
+14:51:27.810 [ratpack-compute-9-28] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-28
+14:51:27.810 [ratpack-compute-9-27] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-27
+14:51:27.838 [ratpack-compute-9-3] WARN  io.netty.channel.AbstractChannel - Force-closing a channel whose registration task was not accepted by an event loop: [id: 0x8679d9cd, /127.0.0.1:51924 =&gt; /127.0.0.1:41930]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:672) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:264) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:655) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:458) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:68) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:56) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:75) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:251) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.840 [ratpack-compute-9-3] WARN  i.n.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.AssertionError: null
+	at io.netty.channel.epoll.EpollEventLoop.remove(EpollEventLoop.java:132) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doDeregister(AbstractEpollChannel.java:129) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doClose(AbstractEpollChannel.java:104) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel.doClose(AbstractEpollStreamChannel.java:541) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.closeForcibly(AbstractChannel.java:669) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.forceClose(ServerBootstrap.java:265) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:260) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.841 [ratpack-compute-9-3] WARN  io.netty.channel.AbstractChannel - Force-closing a channel whose registration task was not accepted by an event loop: [id: 0xb744741f, /127.0.0.1:51925 =&gt; /127.0.0.1:41930]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:672) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:264) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:655) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:458) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:68) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:56) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:75) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:251) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.876 [ratpack-compute-9-3] WARN  i.n.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.AssertionError: null
+	at io.netty.channel.epoll.EpollEventLoop.remove(EpollEventLoop.java:132) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doDeregister(AbstractEpollChannel.java:129) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doClose(AbstractEpollChannel.java:104) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel.doClose(AbstractEpollStreamChannel.java:541) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.closeForcibly(AbstractChannel.java:669) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.forceClose(ServerBootstrap.java:265) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:260) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.888 [ratpack-compute-9-3] WARN  io.netty.channel.AbstractChannel - Force-closing a channel whose registration task was not accepted by an event loop: [id: 0x6caec17b, /127.0.0.1:51926 =&gt; /127.0.0.1:41930]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:672) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:264) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:655) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:458) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:68) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:56) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:75) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:251) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.889 [ratpack-compute-9-3] WARN  i.n.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.AssertionError: null
+	at io.netty.channel.epoll.EpollEventLoop.remove(EpollEventLoop.java:132) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doDeregister(AbstractEpollChannel.java:129) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doClose(AbstractEpollChannel.java:104) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel.doClose(AbstractEpollStreamChannel.java:541) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.closeForcibly(AbstractChannel.java:669) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.forceClose(ServerBootstrap.java:265) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:260) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.893 [ratpack-compute-9-3] WARN  io.netty.channel.AbstractChannel - Force-closing a channel whose registration task was not accepted by an event loop: [id: 0xf62450ea, /127.0.0.1:51927 =&gt; /127.0.0.1:41930]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:672) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:264) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:655) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:458) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:68) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:56) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:75) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:251) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.894 [ratpack-compute-9-3] WARN  i.n.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.AssertionError: null
+	at io.netty.channel.epoll.EpollEventLoop.remove(EpollEventLoop.java:132) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doDeregister(AbstractEpollChannel.java:129) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doClose(AbstractEpollChannel.java:104) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel.doClose(AbstractEpollStreamChannel.java:541) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.closeForcibly(AbstractChannel.java:669) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.forceClose(ServerBootstrap.java:265) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:260) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.894 [ratpack-compute-9-3] WARN  io.netty.channel.AbstractChannel - Force-closing a channel whose registration task was not accepted by an event loop: [id: 0x966b7574, /127.0.0.1:51928 =&gt; /127.0.0.1:41930]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:672) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:264) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:655) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:458) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:68) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:56) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:75) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:251) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.903 [ratpack-compute-9-3] WARN  i.n.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.AssertionError: null
+	at io.netty.channel.epoll.EpollEventLoop.remove(EpollEventLoop.java:132) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doDeregister(AbstractEpollChannel.java:129) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doClose(AbstractEpollChannel.java:104) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel.doClose(AbstractEpollStreamChannel.java:541) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.closeForcibly(AbstractChannel.java:669) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.forceClose(ServerBootstrap.java:265) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:260) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.903 [ratpack-compute-9-3] WARN  io.netty.channel.AbstractChannel - Force-closing a channel whose registration task was not accepted by an event loop: [id: 0xbcc7afd1, /127.0.0.1:51929 =&gt; /127.0.0.1:41930]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:672) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:264) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:655) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:458) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:68) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:56) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:75) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:251) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.925 [ratpack-compute-9-3] WARN  i.n.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.AssertionError: null
+	at io.netty.channel.epoll.EpollEventLoop.remove(EpollEventLoop.java:132) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doDeregister(AbstractEpollChannel.java:129) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doClose(AbstractEpollChannel.java:104) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel.doClose(AbstractEpollStreamChannel.java:541) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.closeForcibly(AbstractChannel.java:669) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.forceClose(ServerBootstrap.java:265) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:260) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.954 [ratpack-compute-9-3] WARN  io.netty.channel.AbstractChannel - Force-closing a channel whose registration task was not accepted by an event loop: [id: 0x34ef61c0, /127.0.0.1:51931 =&gt; /127.0.0.1:41930]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:672) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:264) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:655) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:458) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:68) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:56) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:75) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:251) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.954 [ratpack-compute-9-3] WARN  i.n.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.AssertionError: null
+	at io.netty.channel.epoll.EpollEventLoop.remove(EpollEventLoop.java:132) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doDeregister(AbstractEpollChannel.java:129) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doClose(AbstractEpollChannel.java:104) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel.doClose(AbstractEpollStreamChannel.java:541) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.closeForcibly(AbstractChannel.java:669) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.forceClose(ServerBootstrap.java:265) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:260) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.955 [ratpack-compute-9-3] WARN  io.netty.channel.AbstractChannel - Force-closing a channel whose registration task was not accepted by an event loop: [id: 0x2f10b4cb, /127.0.0.1:51938 =&gt; /127.0.0.1:41930]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:672) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:264) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:655) ~[netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:458) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:68) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:56) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:75) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:251) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:27.956 [ratpack-compute-9-3] WARN  i.n.channel.DefaultChannelPipeline - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.AssertionError: null
+	at io.netty.channel.epoll.EpollEventLoop.remove(EpollEventLoop.java:132) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doDeregister(AbstractEpollChannel.java:129) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollChannel.doClose(AbstractEpollChannel.java:104) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.AbstractEpollStreamChannel.doClose(AbstractEpollStreamChannel.java:541) ~[netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.closeForcibly(AbstractChannel.java:669) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.forceClose(ServerBootstrap.java:265) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:260) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) ~[netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at io.netty.channel.epoll.AbstractEpollServerChannel$EpollServerSocketUnsafe.epollInReady(AbstractEpollServerChannel.java:110) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
+	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
+14:51:28.069 [ratpack-compute-9-3] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-9-3
+14:51:28.342 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:58192
+14:51:28.438 [ratpack-compute-13-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-13-1
+14:51:28.686 [ratpack-compute-11-6] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: GET, uri: /api/entity-990b7395-a386-4b6e-afd6-0936fb0f40f7/3e54cd64-ac93-4eea-a4f8-8393e22847c2)
+14:51:28.742 [ratpack-compute-11-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-11-4
+14:51:28.754 [ratpack-compute-11-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-11-5
+14:51:28.767 [ratpack-compute-11-6] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-11-6
+14:51:29.594 [ratpack-compute-15-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-15-1
+14:51:29.689 [ratpack-compute-17-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-17-1
+14:51:29.782 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:41283
+14:51:29.824 [ratpack-compute-19-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: DELETE, uri: /api/entity-003660f3-b9bb-4e47-8480-d24e52b1e62d/589966e6-c6e6-40d1-afb1-a95590d88c3f)
+14:51:29.873 [ratpack-compute-21-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-21-1
+14:51:29.898 [ratpack-compute-19-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-19-4
+14:51:31.073 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:46692
+14:51:31.252 [ratpack-compute-27-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-27-1
+14:51:31.342 [ratpack-compute-29-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-29-1
+14:51:31.380 [ratpack-compute-23-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-23-4
+14:51:31.410 [ratpack-compute-23-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-23-5
+14:51:31.413 [ratpack-compute-23-6] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-23-6
+14:51:32.389 [ratpack-compute-25-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-25-1
+14:51:32.608 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:45647
+14:51:32.671 [ratpack-compute-31-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: DELETE, uri: /api/entity-21442bba-c561-4773-bf3d-451002068570)
+14:51:32.701 [ratpack-compute-33-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-33-1
+14:51:32.718 [ratpack-compute-31-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-31-4
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 2.6</a> at Aug 10, 2015 2:52:07 PM</p>
+</div>
+</div>
+</body>
+</html>
