@@ -10,5 +10,5 @@ branches:
   except:
     - gh-pages
 
-script:
+after_script:
   - bash gradle/github/publish-test-reports.sh
