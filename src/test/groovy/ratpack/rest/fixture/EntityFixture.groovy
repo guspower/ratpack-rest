@@ -28,9 +28,15 @@ class EntityFixture<T> {
         new ObjectMapper().readValue(json, type)
     }
 
-    T instance(String id) {
+    String dehydrate(T instance) {
+        new ObjectMapper().writeValueAsString(instance)
+    }
+
+    T instance(String id = null) {
         T result = type.newInstance()
-        result.id = id
+        if(id) {
+            result.id = id
+        }
 
         config result
 
@@ -41,8 +47,12 @@ class EntityFixture<T> {
         data.get(random.nextInt(data.size()))
     }
 
-    private T next() {
+    T next() {
         instance(nextId())
+    }
+
+    T nextWithoutIdentity() {
+        instance()
     }
 
     private String nextId() {

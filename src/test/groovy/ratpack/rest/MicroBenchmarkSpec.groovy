@@ -10,12 +10,12 @@ import spock.lang.Shared
 
 class MicroBenchmarkSpec extends OnDemandApplicationSpec {
 
-    @Shared MicroBenchmarkSettings settings = new MicroBenchmarkSettings()
+    @Shared Config config = new Config()
 
     RequestRunner runner
 
     def setup() {
-        runner = new RequestRunner(currentTestName(), settings.duration)
+        runner = new RequestRunner(currentTestName(), config.duration)
     }
 
     def cleanup() {
@@ -24,54 +24,101 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
 
     def "GET - untyped entity"() {
         given:
-            def entityFixture = new EntityFixture<HashMap>(settings.numberOfEntities, type, config)
+            def entityFixture = new EntityFixture<HashMap>(config.numberOfEntities, type, generator)
 
         and:
             app([RestDslSpec.entity(name, entityFixture.data)])
 
         and:
-            def httpFixture = new HttpFixture<HashMap>("${application.address}api/$name", entityFixture)
+            def httpFixture = new HttpFixture<HashMap>("${application.address}api/$name", entityFixture,
+                HttpFixture.Method.GET)
 
         when:
             runner.run(httpFixture)
 
         then:
-            settings.acceptableSuccessRate < runner.benchmark.successRate
-            settings.acceptableThroughput  < runner.benchmark.throughput
+            config.acceptableSuccessRate < runner.benchmark.successRate
+            config.acceptableThroughput  < runner.benchmark.throughput
 
         where:
-            name   = RestDslSpec.newEntityName()
-            type   = HashMap
-            config = { it.field = "field-${it.id}".toString() }
+            name      = RestDslSpec.newEntityName()
+            type      = HashMap
+            generator = { it.field = "field-${it.id}".toString() }
     }
 
     def "GET - typed entity"() {
         given:
-            def entityFixture = new EntityFixture<Bus>(settings.numberOfEntities, type, { Bus bus ->
-                bus.colour = 'red'
-                bus.name = bus.id
-            })
+            def entityFixture = new EntityFixture<Bus>(config.numberOfEntities, type, generator)
 
         and:
             app([RestDslSpec.entity(name, entityFixture.data)])
 
         and:
-            def httpFixture = new HttpFixture<Bus>("${application.address}api/$name", entityFixture)
+            def httpFixture = new HttpFixture<Bus>("${application.address}api/$name", entityFixture,
+                HttpFixture.Method.GET)
 
         when:
             runner.run(httpFixture)
 
         then:
-            settings.acceptableSuccessRate < runner.benchmark.successRate
-            settings.acceptableThroughput  < runner.benchmark.throughput
+            config.acceptableSuccessRate < runner.benchmark.successRate
+            config.acceptableThroughput  < runner.benchmark.throughput
 
         where:
-            type = Bus
-            name = RestDslSpec.newEntityName()
-            config = { Bus bus -> bus.colour = 'red'; bus.name = bus.id }
+            type      = Bus
+            name      = RestDslSpec.newEntityName()
+            generator = { Bus bus -> bus.colour = 'red'; bus.name = bus.id }
     }
 
-    final class MicroBenchmarkSettings {
+    def "POST - untyped entity"() {
+        given:
+            def entityFixture = new EntityFixture<HashMap>(0, type, generator)
+
+        and:
+            app([RestDslSpec.entity(name, [])])
+
+        and:
+            def httpFixture = new HttpFixture<HashMap>("${application.address}api/$name", entityFixture,
+                HttpFixture.Method.POST)
+
+        when:
+            runner.run(httpFixture)
+
+        then:
+            config.acceptableSuccessRate < runner.benchmark.successRate
+            config.acceptableThroughput  < runner.benchmark.throughput
+
+        where:
+            name      = RestDslSpec.newEntityName()
+            type      = HashMap
+            generator = { it.field = "field-${it.id}".toString() }
+    }
+
+    def "POST - typed entity"() {
+        given:
+            def entityFixture = new EntityFixture<Bus>(0, type, generator)
+
+        and:
+            app([RestDslSpec.entity(name, [])])
+
+        and:
+            def httpFixture = new HttpFixture<HashMap>("${application.address}api/$name", entityFixture,
+                HttpFixture.Method.POST)
+
+        when:
+            runner.run(httpFixture)
+
+        then:
+            config.acceptableSuccessRate < runner.benchmark.successRate
+            config.acceptableThroughput  < runner.benchmark.throughput
+
+        where:
+            name      = RestDslSpec.newEntityName()
+            type      = Bus
+            generator = { Bus bus -> bus.colour = 'red'; bus.name = bus.id }
+    }
+
+    final static class Config {
 
         int duration = 5000
         int numberOfEntities = 500

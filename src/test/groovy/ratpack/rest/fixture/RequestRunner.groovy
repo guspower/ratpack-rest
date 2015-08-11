@@ -27,7 +27,7 @@ class RequestRunner {
 
     Closure request = { AtomicBoolean keepGoing, HttpFixture httpFixture ->
         while(keepGoing.get()) {
-            if(httpFixture.getNext()) {
+            if(httpFixture.postNext()) {
                 success.incrementAndGet()
             } else {
                 failure.incrementAndGet()

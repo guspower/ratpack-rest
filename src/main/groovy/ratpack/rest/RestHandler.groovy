@@ -74,13 +74,19 @@ class RestHandler implements Handler {
             if (isJsonRequest(context)) {
                 try {
                     def data = context.parse(fromJson(entity.store.type))
-                    if (entity.store.update(id, data)) {
-                        context.clientError SC_ACCEPTED
-                    } else {
-                        context.clientError SC_NOT_MODIFIED
+                    context.blocking {
+                        try {
+                            entity.store.update(id, data)
+                        } catch(ConstraintViolationException validation) {
+                            validationResponse context, ConstraintFailure.constraintViolation(validation)
+                        }
+                    }.then { boolean success ->
+                        if (success) {
+                            context.clientError SC_ACCEPTED
+                        } else {
+                            context.clientError SC_NOT_MODIFIED
+                        }
                     }
-                } catch(ConstraintViolationException validation) {
-                    validationResponse context, ConstraintFailure.constraintViolation(validation)
                 } catch(JsonMappingException deserialization) {
                     validationResponse context, ConstraintFailure.jsonMapping(deserialization, entity)
                 }
@@ -117,16 +123,18 @@ class RestHandler implements Handler {
         if (data?.id) {
             post data.id, context
         } else {
-            try {
-                String id = entity.store.create(data)
-
+            context.blocking {
+                try {
+                    entity.store.create(data)
+                } catch (ConstraintViolationException validation) {
+                    validationResponse context, ConstraintFailure.constraintViolation(validation)
+                }
+            }.then { String id ->
                 context.with {
                     response.headers.add 'location', "/api/${entity.name}/$id"
                     response.status SC_CREATED
                     response.send()
                 }
-            } catch(ConstraintViolationException validation) {
-                validationResponse context, ConstraintFailure.constraintViolation(validation)
             }
         }
     }
