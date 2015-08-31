@@ -18,7 +18,7 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
     cp -R build/reports /tmp/gh-pages
     git checkout gh-pages
     cp -R /tmp/gh-pages/reports build
-    find build/reports -name *json | perl -e 'use JSON; @in=grep(s/\n$//, <>); print encode_json(\@in)."\n";' > build/reports/benchmark.json
+    find build/reports -name *json | awk ' BEGIN { ORS = ""; print "["; } { print "\/\@"$0"\/\@"; } END { print "]"; }' | sed "s^\"^\\\\\"^g;s^\/\@\/\@^\", \"^g;s^\/\@^\"^g" > build/reports/benchmark.json
     git add -A -f build/reports
     git status
     git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
