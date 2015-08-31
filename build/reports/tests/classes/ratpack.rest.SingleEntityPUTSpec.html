@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">10.962s</div>
+<div class="counter">5.392s</div>
 <p>duration</p>
 </div>
 </td>
@@ -63,9 +63,6 @@
 <li>
 <a href="#tab0">Tests</a>
 </li>
-<li>
-<a href="#tab1">Standard output</a>
-</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -79,227 +76,55 @@
 </thead>
 <tr>
 <td class="success">can update a validating entity</td>
-<td>0.993s</td>
+<td>0.360s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">can update an existing entity</td>
-<td>2.051s</td>
+<td>0.835s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">can update an existing typed entity</td>
-<td>1.256s</td>
+<td>0.627s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cannot add an entry to an unknown entity type</td>
-<td>0.783s</td>
+<td>0.497s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cannot update a typed entity with unknown fields</td>
-<td>1.007s</td>
+<td>0.525s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cannot update an unknown entity</td>
-<td>0.818s</td>
+<td>0.360s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">must supply an id in the url</td>
-<td>0.711s</td>
+<td>0.763s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">updating a validating entity with invalid data returns a 400 bad request with error details</td>
-<td>0.817s</td>
+<td>0.310s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">updating an existing entity with arbitrary json data leaves previous data intact</td>
-<td>1.224s</td>
+<td>0.573s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">updating an existing with no data returns not modified</td>
-<td>1.302s</td>
+<td>0.542s</td>
 <td class="success">passed</td>
 </tr>
 </table>
-</div>
-<div id="tab1" class="tab">
-<h2>Standard output</h2>
-<span class="code">
-<pre>14:51:50.018 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:58498
-14:51:50.080 [ratpack-compute-101-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:50.090 [ratpack-compute-101-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:50.090 [ratpack-compute-101-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:50.091 [ratpack-compute-101-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:50.091 [ratpack-compute-101-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:50.096 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:50.107 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:50.110 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:50.126 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:50.127 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.127 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.127 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.128 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.128 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.129 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.129 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:50.129 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.129 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.130 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:50.130 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.130 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.130 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.Map.java.util.Map$Entry&lt;K, V&gt;
-14:51:50.131 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:50.131 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:50.131 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:50.135 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:50.136 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:50.137 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.Function&lt;? super K, ? extends V&gt;
-14:51:50.137 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:50.137 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:50.146 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super V, ? super V, ? extends V&gt;
-14:51:50.147 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:50.150 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:50.151 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.Function&lt;? super K, ? extends V&gt;
-14:51:50.158 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:50.159 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:50.160 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super V, ? super V, ? extends V&gt;
-14:51:50.170 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.173 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.178 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.178 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.179 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.179 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.179 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.179 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.182 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:50.182 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.183 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.183 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:50.183 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.183 [ratpack-compute-101-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:50.263 [ratpack-compute-101-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: PUT, uri: /api/entity-2e4c682a-4c10-4d55-a620-455102078f02/1cd11519-ac02-40a5-ae41-cd2019a6f464)
-14:51:50.359 [ratpack-compute-105-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-105-1
-14:51:50.422 [ratpack-compute-101-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-101-4
-14:51:50.430 [ratpack-compute-101-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-101-5
-14:51:51.885 [ratpack-compute-103-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-103-1
-14:51:52.006 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:44342
-14:51:52.032 [ratpack-compute-107-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: PUT, uri: /api/entity-092cb390-8724-44aa-8af6-e3f82f55864d/19217e06-6c6b-4e7d-bc40-56c701a50a0f)
-14:51:52.065 [ratpack-compute-109-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-109-1
-14:51:52.120 [ratpack-compute-111-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-111-1
-14:51:52.122 [ratpack-compute-107-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-107-4
-14:51:52.144 [ratpack-compute-107-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-107-5
-14:51:53.278 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:57635
-14:51:53.384 [ratpack-compute-113-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:53.386 [ratpack-compute-113-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:53.386 [ratpack-compute-113-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:53.386 [ratpack-compute-113-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:53.387 [ratpack-compute-113-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:53.388 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:53.389 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:53.389 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:53.389 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:53.389 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.389 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.389 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.Map.java.util.Map$Entry&lt;K, V&gt;
-14:51:53.390 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:53.391 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:53.391 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.LinkedHashMap.java.util.LinkedHashMap$Entry&lt;K, V&gt;
-14:51:53.391 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:53.392 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:53.392 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.Function&lt;? super K, ? extends V&gt;
-14:51:53.392 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:53.392 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:53.392 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super V, ? super V, ? extends V&gt;
-14:51:53.393 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:53.393 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:53.393 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.Function&lt;? super K, ? extends V&gt;
-14:51:53.393 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:53.393 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:53.393 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super V, ? super V, ? extends V&gt;
-14:51:53.411 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.412 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.413 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.413 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.413 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.414 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.414 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.414 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.414 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:53.414 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.415 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.415 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:53.416 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.416 [ratpack-compute-113-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:53.446 [ratpack-compute-113-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: PUT, uri: /api/entity-48cf89c4-7932-4e2a-82a6-e90bf3cf094d/e949f42c-0d18-4bf8-866b-81cfd2a6f1cb)
-14:51:53.504 [ratpack-compute-117-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-117-1
-14:51:53.536 [ratpack-compute-113-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-113-4
-14:51:53.537 [ratpack-compute-113-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-113-5
-14:51:54.448 [ratpack-compute-115-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-115-1
-14:51:54.526 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:54502
-14:51:54.547 [ratpack-compute-119-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:54.547 [ratpack-compute-119-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:54.548 [ratpack-compute-119-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:54.548 [ratpack-compute-119-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:54.552 [ratpack-compute-119-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:54.583 [ratpack-compute-119-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: PUT, uri: /api/bus/310d5329-9e67-4860-bb71-f12ec6102b98)
-14:51:54.584 [ratpack-compute-121-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-121-1
-14:51:54.613 [ratpack-compute-123-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-123-1
-14:51:54.642 [ratpack-compute-119-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-119-4
-14:51:54.642 [ratpack-compute-119-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-119-5
-14:51:55.823 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:34144
-14:51:55.881 [ratpack-compute-125-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:55.881 [ratpack-compute-125-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:55.881 [ratpack-compute-125-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:55.882 [ratpack-compute-125-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:55.882 [ratpack-compute-125-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:55.903 [ratpack-compute-125-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: PUT, uri: /api/car/991a303c-d4d3-43aa-804d-bf8c415eb874)
-14:51:55.933 [ratpack-compute-127-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-127-1
-14:51:55.966 [ratpack-compute-129-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-129-1
-14:51:56.002 [ratpack-compute-125-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-125-4
-14:51:56.018 [ratpack-compute-125-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-125-5
-14:51:56.729 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:48640
-14:51:56.817 [ratpack-compute-133-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-133-1
-14:51:56.834 [ratpack-compute-131-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-131-4
-14:51:57.769 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:50531
-14:51:57.814 [ratpack-compute-135-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: PUT, uri: /api/entity-4ee92997-1360-4dbd-bf9d-96930fc90756/0bb009f9-5acd-4ad0-b1bd-8981d6ce57ae)
-14:51:57.832 [ratpack-compute-137-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-137-1
-14:51:57.870 [ratpack-compute-135-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-135-4
-14:51:58.497 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:49421
-14:51:58.542 [ratpack-compute-139-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: PUT, uri: /api/entity-65e6423c-622b-4706-9752-b6abf265a23c/ded6b086-ee31-4818-aa26-68260586e80a)
-14:51:58.554 [ratpack-compute-141-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-141-1
-14:51:58.602 [ratpack-compute-139-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-139-4
-14:51:59.310 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:48467
-14:51:59.393 [ratpack-compute-145-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-145-1
-14:51:59.394 [ratpack-compute-143-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-143-4
-14:52:00.074 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:37727
-14:52:00.082 [ratpack-compute-147-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:52:00.082 [ratpack-compute-147-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:52:00.083 [ratpack-compute-147-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:52:00.083 [ratpack-compute-147-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:52:00.086 [ratpack-compute-147-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:52:00.094 [ratpack-compute-147-4] DEBUG o.h.v.r.PlatformResourceBundleLocator - ValidationMessages not found.
-14:52:00.095 [ratpack-compute-147-4] DEBUG o.h.v.r.PlatformResourceBundleLocator - ContributorValidationMessages not found.
-14:52:00.095 [ratpack-compute-147-4] DEBUG o.h.v.r.PlatformResourceBundleLocator - org.hibernate.validator.ValidationMessages found.
-14:52:00.150 [ratpack-compute-147-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-147-4
-</pre>
-</span>
 </div>
 </div>
 <div id="footer">
@@ -309,7 +134,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 2.6</a> at Aug 10, 2015 2:52:07 PM</p>
+<a href="http://www.gradle.org">Gradle 2.6</a> at Aug 31, 2015 1:56:30 PM</p>
 </div>
 </div>
 </body>

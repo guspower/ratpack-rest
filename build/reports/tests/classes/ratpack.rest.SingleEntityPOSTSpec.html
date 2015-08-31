@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">13.130s</div>
+<div class="counter">7.254s</div>
 <p>duration</p>
 </div>
 </td>
@@ -63,9 +63,6 @@
 <li>
 <a href="#tab0">Tests</a>
 </li>
-<li>
-<a href="#tab1">Standard output</a>
-</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -79,287 +76,50 @@
 </thead>
 <tr>
 <td class="success">can add a new entity and retrieve it</td>
-<td>2.405s</td>
+<td>1.186s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">can add a new entity with arbitrary json data</td>
-<td>1.790s</td>
+<td>0.636s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">can add a new typed entity and retrieve it</td>
-<td>1.509s</td>
+<td>1.293s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">can add a valid validating entity</td>
-<td>1.730s</td>
+<td>0.622s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cannot add a new entity with an id supplied in the payload</td>
-<td>1.696s</td>
+<td>0.940s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cannot add a new entity with an id supplied in the url</td>
-<td>0.568s</td>
+<td>0.888s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cannot add a new typed entity with unknown fields</td>
-<td>0.914s</td>
+<td>0.487s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cannot add an entry to an unknown entity type</td>
-<td>1.122s</td>
+<td>0.662s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">invalid validating entity returns a 400 bad request with error details</td>
-<td>1.396s</td>
+<td>0.540s</td>
 <td class="success">passed</td>
 </tr>
 </table>
-</div>
-<div id="tab1" class="tab">
-<h2>Standard output</h2>
-<span class="code">
-<pre>14:51:36.762 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:54553
-14:51:36.850 [ratpack-compute-55-4] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider
-14:51:36.850 [ratpack-compute-55-4] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.2.0.Final
-14:51:36.903 [ratpack-compute-55-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:36.911 [ratpack-compute-49-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-49-1
-14:51:36.943 [ratpack-compute-55-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:36.944 [ratpack-compute-55-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:36.945 [ratpack-compute-55-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:36.945 [ratpack-compute-55-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:37.166 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:37.167 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:37.170 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.Function&lt;? super K, ? extends V&gt;
-14:51:37.170 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:37.172 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:37.172 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super V, ? super V, ? extends V&gt;
-14:51:37.172 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.174 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.178 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.179 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.179 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.182 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.182 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.202 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.202 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:37.203 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.203 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.203 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:37.203 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.203 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:37.208 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:37.208 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:37.209 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.Function&lt;? super K, ? extends V&gt;
-14:51:37.209 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:37.209 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:37.209 [ratpack-compute-55-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super V, ? super V, ? extends V&gt;
-14:51:37.312 [ratpack-compute-53-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-53-1
-14:51:37.487 [ratpack-compute-57-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-57-1
-14:51:37.538 [ratpack-compute-59-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-59-1
-14:51:37.584 [ratpack-compute-61-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-61-1
-14:51:37.632 [ratpack-compute-55-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-55-4
-14:51:37.654 [ratpack-compute-55-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-55-5
-14:51:37.670 [ratpack-compute-55-6] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-55-6
-14:51:39.158 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:50428
-14:51:39.197 [ratpack-compute-63-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:39.197 [ratpack-compute-63-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:39.197 [ratpack-compute-63-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:39.229 [ratpack-compute-63-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:39.230 [ratpack-compute-63-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:39.251 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:39.252 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:39.253 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.Function&lt;? super K, ? extends V&gt;
-14:51:39.253 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:39.253 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:39.253 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super V, ? super V, ? extends V&gt;
-14:51:39.286 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.287 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.287 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.287 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.288 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.288 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.288 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.288 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.288 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:39.288 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.289 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.289 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$TreeNode&lt;K, V&gt;
-14:51:39.289 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.289 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.HashMap.java.util.HashMap$Node&lt;K, V&gt;
-14:51:39.322 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:39.329 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiConsumer&lt;? super K, ? super V&gt;
-14:51:39.330 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.Function&lt;? super K, ? extends V&gt;
-14:51:39.330 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:39.331 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super K, ? super V, ? extends V&gt;
-14:51:39.332 [ratpack-compute-63-4] DEBUG o.h.v.i.m.p.TypeAnnotationAwareMetaDataProvider - HV000188: Parameterized type with more than one argument is not supported: java.util.function.BiFunction&lt;? super V, ? super V, ? extends V&gt;
-14:51:39.518 [ratpack-compute-67-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-67-1
-14:51:39.534 [ratpack-compute-63-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-63-4
-14:51:39.554 [ratpack-compute-63-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-63-5
-14:51:40.881 [ratpack-compute-65-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-65-1
-14:51:40.914 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:49780
-14:51:40.925 [ratpack-compute-69-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 3 thread-local buffer(s) from thread: ratpack-compute-69-4
-14:51:41.538 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:36807
-14:51:41.575 [ratpack-compute-75-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-75-1
-14:51:41.603 [ratpack-compute-73-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-73-4
-14:51:43.141 [ratpack-compute-71-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-71-1
-14:51:43.357 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:57576
-14:51:43.409 [ratpack-compute-77-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:43.418 [ratpack-compute-77-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:43.418 [ratpack-compute-77-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:43.419 [ratpack-compute-77-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:43.422 [ratpack-compute-77-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:43.638 [ratpack-compute-77-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-77-4
-14:51:43.654 [ratpack-compute-77-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-77-5
-14:51:44.654 [ratpack-compute-81-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-81-1
-14:51:44.660 [ratpack-compute-79-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-79-1
-14:51:44.770 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:50058
-14:51:44.900 [ratpack-compute-83-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:44.901 [ratpack-compute-83-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:44.901 [ratpack-compute-83-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:44.902 [ratpack-compute-83-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:44.906 [ratpack-compute-83-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:44.949 [ratpack-compute-83-4] WARN  r.s.i.DefaultResponseTransmitter - attempt at double transmission for: /api/bus
-ratpack.handling.DoubleTransmissionException: attempt at double transmission for: /api/bus
-	at ratpack.server.internal.DefaultResponseTransmitter.pre(DefaultResponseTransmitter.java:94) [ratpack-core-0.9.18.jar:na]
-	at ratpack.server.internal.DefaultResponseTransmitter.transmit(DefaultResponseTransmitter.java:105) [ratpack-core-0.9.18.jar:na]
-	at ratpack.server.internal.DefaultResponseTransmitter.transmit(DefaultResponseTransmitter.java:101) [ratpack-core-0.9.18.jar:na]
-	at ratpack.http.internal.DefaultResponse.lambda$commit$199(DefaultResponse.java:316) [ratpack-core-0.9.18.jar:na]
-	at ratpack.http.internal.DefaultResponse$$Lambda$179/1536565534.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
-	at ratpack.http.internal.DefaultResponse.finalizeResponse(DefaultResponse.java:330) [ratpack-core-0.9.18.jar:na]
-	at ratpack.http.internal.DefaultResponse.commit(DefaultResponse.java:314) [ratpack-core-0.9.18.jar:na]
-	at ratpack.http.internal.DefaultResponse.send(DefaultResponse.java:218) [ratpack-core-0.9.18.jar:na]
-	at ratpack.http.Response$send$0.call(Unknown Source) [ratpack-core-0.9.18.jar:na]
-	at ratpack.rest.RestHandler$_post_closure3.doCall(RestHandler.groovy:126) [main/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
-	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:292) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.Closure.call(Closure.java:423) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.Closure.call(Closure.java:439) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.DefaultGroovyMethods.with(DefaultGroovyMethods.java:238) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.dgm$757.invoke(Unknown Source) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoMetaMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:271) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:53) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:122) [groovy-all-2.4.3.jar:2.4.3]
-	at ratpack.rest.RestHandler.post(RestHandler.groovy:123) [main/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
-	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:382) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.callCurrent(PogoMetaClassSite.java:66) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:163) [groovy-all-2.4.3.jar:2.4.3]
-	at ratpack.rest.RestHandler$_handle_closure1.doCall(RestHandler.groovy:31) [main/:na]
-	at sun.reflect.GeneratedMethodAccessor19.invoke(Unknown Source) ~[na:na]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
-	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
-	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:292) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.Closure.call(Closure.java:423) [groovy-all-2.4.3.jar:2.4.3]
-	at groovy.lang.Closure.call(Closure.java:439) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.DefaultGroovyMethods.with(DefaultGroovyMethods.java:238) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.dgm$757.invoke(Unknown Source) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoMetaMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:271) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:53) [groovy-all-2.4.3.jar:2.4.3]
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:122) [groovy-all-2.4.3.jar:2.4.3]
-	at ratpack.rest.RestHandler.handle(RestHandler.groovy:25) [main/:na]
-	at ratpack.handling.internal.DefaultContext.next(DefaultContext.java:248) [ratpack-core-0.9.18.jar:na]
-	at ratpack.handling.internal.DefaultContext.insert(DefaultContext.java:279) [ratpack-core-0.9.18.jar:na]
-	at ratpack.path.internal.PathHandler.handle(PathHandler.java:89) [ratpack-core-0.9.18.jar:na]
-	at ratpack.handling.internal.DefaultContext.next(DefaultContext.java:248) [ratpack-core-0.9.18.jar:na]
-	at ratpack.handling.internal.DefaultContext.lambda$start$175(DefaultContext.java:160) [ratpack-core-0.9.18.jar:na]
-	at ratpack.handling.internal.DefaultContext$$Lambda$174/2130610814.execute(Unknown Source) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.ExecutionBacking.lambda$new$109(ExecutionBacking.java:79) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.ExecutionBacking$$Lambda$114/464090291.execute(Unknown Source) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.ExecutionBacking.intercept(ExecutionBacking.java:281) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.ExecutionBacking.intercept(ExecutionBacking.java:248) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.ExecutionBacking.drain(ExecutionBacking.java:217) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.ExecutionBacking.&lt;init&gt;(ExecutionBacking.java:86) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.DefaultExecControl$1.lambda$start$120(DefaultExecControl.java:135) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.DefaultExecControl$1$$Lambda$175/518327735.create(Unknown Source) [ratpack-core-0.9.18.jar:na]
-	at ratpack.util.Exceptions.uncheck(Exceptions.java:103) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.DefaultExecControl$1.start(DefaultExecControl.java:135) [ratpack-core-0.9.18.jar:na]
-	at ratpack.handling.internal.DefaultContext.start(DefaultContext.java:160) [ratpack-core-0.9.18.jar:na]
-	at ratpack.server.internal.NettyHandlerAdapter.channelRead0(NettyHandlerAdapter.java:137) [ratpack-core-0.9.18.jar:na]
-	at ratpack.server.internal.NettyHandlerAdapter.channelRead0(NettyHandlerAdapter.java:54) [ratpack-core-0.9.18.jar:na]
-	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at ratpack.server.internal.NettyHandlerAdapter.channelRead(NettyHandlerAdapter.java:91) [ratpack-core-0.9.18.jar:na]
-	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103) [netty-codec-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111) [netty-codec-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103) [netty-codec-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:244) [netty-codec-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.ChannelHandlerInvokerUtil.invokeChannelReadNow(ChannelHandlerInvokerUtil.java:83) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.DefaultChannelHandlerInvoker.invokeChannelRead(DefaultChannelHandlerInvoker.java:153) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:157) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:946) [netty-transport-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at io.netty.channel.epoll.AbstractEpollStreamChannel$EpollStreamUnsafe.epollInReady(AbstractEpollStreamChannel.java:831) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
-	at io.netty.channel.epoll.EpollEventLoop.processReady(EpollEventLoop.java:322) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
-	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:254) [netty-transport-native-epoll-4.1.0.Beta5-linux-x86_64.jar:na]
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:703) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory.lambda$newThread$137(DefaultExecController.java:84) [ratpack-core-0.9.18.jar:na]
-	at ratpack.exec.internal.DefaultExecController$ExecControllerBindingThreadFactory$$Lambda$113/617348663.run(Unknown Source) [ratpack-core-0.9.18.jar:na]
-	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:137) [netty-common-4.1.0.Beta5.jar:4.1.0.Beta5]
-	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_31]
-14:51:44.974 [ratpack-compute-83-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-83-4
-14:51:45.734 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:36517
-14:51:45.783 [ratpack-compute-87-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:45.786 [ratpack-compute-87-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:45.786 [ratpack-compute-87-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:45.787 [ratpack-compute-87-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:45.787 [ratpack-compute-87-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:45.949 [ratpack-compute-85-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-85-1
-14:51:46.074 [ratpack-compute-89-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-89-1
-14:51:46.138 [ratpack-compute-87-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-87-4
-14:51:46.142 [ratpack-compute-87-5] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-87-5
-14:51:47.287 [ratpack-compute-91-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-91-1
-14:51:47.410 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:37344
-14:51:47.432 [ratpack-compute-93-4] DEBUG o.h.v.i.e.r.DefaultTraversableResolver - Cannot find javax.persistence.Persistence on classpath. Assuming non JPA 2 environment. All properties will per default be traversable.
-14:51:47.434 [ratpack-compute-93-4] DEBUG o.h.v.i.xml.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
-14:51:47.434 [ratpack-compute-93-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
-14:51:47.435 [ratpack-compute-93-4] DEBUG o.h.v.i.xml.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
-14:51:47.438 [ratpack-compute-93-4] DEBUG o.h.v.i.xml.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
-14:51:47.492 [ratpack-compute-93-4] DEBUG o.h.v.r.PlatformResourceBundleLocator - ValidationMessages not found.
-14:51:47.505 [ratpack-compute-93-4] DEBUG o.h.v.r.PlatformResourceBundleLocator - ContributorValidationMessages not found.
-14:51:47.524 [ratpack-compute-93-4] DEBUG o.h.v.r.PlatformResourceBundleLocator - org.hibernate.validator.ValidationMessages found.
-14:51:47.674 [ratpack-compute-93-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-93-4
-14:51:48.685 [ratpack-compute-95-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: ratpack-compute-95-1
-14:51:48.766 [Test worker] INFO  ratpack.server.RatpackServer - Ratpack started for http://localhost:42199
-14:51:48.788 [ratpack-compute-97-4] WARN  r.e.i.DefaultProductionErrorHandler - Default production error handler used to render client error, please add a ratpack.error.ClientErrorHandler instance to your application (method: POST, uri: /api/entity-0366c0ed-cab6-4192-9d99-ef32c8176161)
-14:51:48.822 [ratpack-compute-99-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-99-1
-14:51:48.846 [ratpack-compute-97-4] DEBUG io.netty.buffer.PoolThreadCache - Freed 2 thread-local buffer(s) from thread: ratpack-compute-97-4
-</pre>
-</span>
 </div>
 </div>
 <div id="footer">
@@ -369,7 +129,7 @@ ratpack.handling.DoubleTransmissionException: attempt at double transmission for
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 2.6</a> at Aug 10, 2015 2:52:07 PM</p>
+<a href="http://www.gradle.org">Gradle 2.6</a> at Aug 31, 2015 1:56:30 PM</p>
 </div>
 </div>
 </body>
