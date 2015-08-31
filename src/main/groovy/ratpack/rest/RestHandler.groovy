@@ -1,7 +1,7 @@
 package ratpack.rest
 
-import com.fasterxml.jackson.databind.JsonMappingException
 import groovy.util.logging.Slf4j
+import ratpack.exec.Blocking
 import ratpack.handling.Context
 import ratpack.handling.Handler
 
@@ -28,7 +28,7 @@ class RestHandler implements Handler {
             if(request.method.get) {
                 id ? get(context, id) : getAll(context)
             } else if(request.method.post) {
-                id ? post(id, context) : post(context)
+                id ? post(context, id) : post(context)
             } else if(request.method.delete) {
                 id ? delete(context, id) : deleteAll(context)
             } else if(request.method.put) {
@@ -42,7 +42,8 @@ class RestHandler implements Handler {
         if(entity) {
             context.render toJson(entity)
         } else {
-            context.clientError SC_NOT_FOUND
+            context.response.status SC_NOT_FOUND
+            context.response.send()
         }
     }
 
@@ -65,16 +66,18 @@ class RestHandler implements Handler {
                 response.send()
             }
         } else {
-            context.clientError SC_NOT_FOUND
+            context.response.status SC_NOT_FOUND
+            context.response.send()
         }
     }
 
     private void put(Context context, String id) {
         if(entity.store.get(id)) {
             if (isJsonRequest(context)) {
-                try {
-                    def data = context.parse(fromJson(entity.store.type))
-                    context.blocking {
+                context.parse(fromJson(entity.store.type)).onError { e ->
+                    validationResponse context, ConstraintFailure.jsonMapping(e.cause, entity)
+                }.then { data ->
+                    Blocking.get {
                         try {
                             entity.store.update(id, data)
                         } catch(ConstraintViolationException validation) {
@@ -82,48 +85,55 @@ class RestHandler implements Handler {
                         }
                     }.then { boolean success ->
                         if (success) {
-                            context.clientError SC_ACCEPTED
+                            context.response.status SC_ACCEPTED
+                            context.response.send()
                         } else {
-                            context.clientError SC_NOT_MODIFIED
+                            context.response.status SC_NOT_MODIFIED
+                            context.response.send()
                         }
                     }
-                } catch(JsonMappingException deserialization) {
-                    validationResponse context, ConstraintFailure.jsonMapping(deserialization, entity)
                 }
             } else {
-                context.clientError SC_NOT_MODIFIED
+                context.response.status SC_NOT_MODIFIED
+                context.response.send()
             }
         } else {
-            context.clientError SC_NOT_FOUND
+            context.response.status SC_NOT_FOUND
+            context.response.send()
         }
     }
 
     private void putAll(Context context) {
         if (isJsonRequest(context)) {
-            def data = context.parse(fromJson(entity.store.type))
+            context.parse(fromJson(entity.store.type)).then { data ->
+
+            }
         } else {
             validationResponse context, ConstraintFailure.noClientSuppliedId(entity.name)
         }
     }
 
-    private void post(String id, Context context) {
+    private void post(Context context, String id) {
         validationResponse context, ConstraintFailure.clientSuppliedId(entity.name, id)
     }
 
     private void post(Context context) {
-        def data
         if(isJsonRequest(context)) {
-            try {
-                data = context.parse(fromJson(entity.store.type))
-            } catch(JsonMappingException deserialization) {
-                validationResponse context, ConstraintFailure.jsonMapping(deserialization, entity)
+            context.parse(fromJson(entity.store.type)).onError { e ->
+                validationResponse context, ConstraintFailure.jsonMapping(e.cause, entity)
+            }.then { data ->
+                create context, data
             }
-        }
-
-        if (data?.id) {
-            post data.id, context
         } else {
-            context.blocking {
+            create context
+        }
+    }
+
+    private void create(Context context, def data = [:]) {
+        if(data.id) {
+            post context, data.id
+        } else {
+            Blocking.get {
                 try {
                     entity.store.create(data)
                 } catch (ConstraintViolationException validation) {
@@ -145,7 +155,7 @@ class RestHandler implements Handler {
 
     private void validationResponse(Context context, List<ConstraintFailure> failures) {
         context.with {
-            response.status SC_BAD_REQUEST
+            context.response.status SC_BAD_REQUEST
             render toJson(failures)
         }
     }

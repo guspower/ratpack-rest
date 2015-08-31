@@ -2,20 +2,26 @@ package ratpack.rest.fixture
 
 import com.google.inject.Injector
 import com.google.inject.Module
+import groovy.util.logging.Slf4j
+import ratpack.error.ClientErrorHandler
+import ratpack.error.ServerErrorHandler
 import ratpack.groovy.Groovy
 import ratpack.groovy.handling.GroovyChain
 import ratpack.groovy.internal.ClosureUtil
 import ratpack.guice.BindingsSpec
 import ratpack.guice.Guice
+import ratpack.handling.Context
 import ratpack.jackson.guice.JacksonModule
 import ratpack.rest.DefaultRestEntity
 import ratpack.rest.RestHandlers
 import ratpack.rest.RestModule
 import ratpack.server.RatpackServer
 import ratpack.server.ServerConfig
+import ratpack.server.ServerConfigBuilder
 import ratpack.test.embed.EmbeddedApp
 import spock.lang.Specification
 
+@Slf4j
 class OnDemandApplicationSpec extends Specification {
 
     protected EmbeddedApp application
@@ -32,6 +38,8 @@ class OnDemandApplicationSpec extends Specification {
             module RestModule, { RestModule.Config config ->
                 config.entities.addAll entities
             }
+            bind ServerErrorHandler, ErrorHandler
+            bind ClientErrorHandler, ErrorHandler
         }
         handlers { RestHandlers rest ->
             rest.register delegate
@@ -60,11 +68,12 @@ class OnDemandApplicationSpec extends Specification {
         }
     }
 
-    protected ServerConfig.Builder serverConfigBuilder() {
-        def serverConfig = ServerConfig.noBaseDir()
-        serverConfig.port(0)
-        serverConfig.with(_serverConfig)
-        serverConfig
+    protected ServerConfigBuilder serverConfigBuilder() {
+        def config = ServerConfig.builder()
+            .port(0)
+
+        config.with(_serverConfig)
+        config
     }
 
     void handlers(@DelegatesTo(value = GroovyChain, strategy = Closure.DELEGATE_FIRST) Closure<?> configurer) {
@@ -75,7 +84,7 @@ class OnDemandApplicationSpec extends Specification {
         _bindings = configurer
     }
 
-    void serverConfig(@DelegatesTo(value = ServerConfig.Builder, strategy = Closure.DELEGATE_FIRST) Closure<?> configurer) {
+    void serverConfig(@DelegatesTo(value = ServerConfigBuilder, strategy = Closure.DELEGATE_FIRST) Closure<?> configurer) {
         _serverConfig = configurer
     }
 
@@ -87,4 +96,18 @@ class OnDemandApplicationSpec extends Specification {
         "${this.class.simpleName}-${specificationContext.currentFeature.name}".replaceAll('\\W', '-')
     }
 
+}
+
+@Slf4j
+class ErrorHandler implements ClientErrorHandler, ServerErrorHandler {
+
+    @Override
+    void error(Context context, int statusCode) throws Exception {
+        log.warn "ERROR - $statusCode"
+    }
+
+    @Override
+    void error(Context context, Throwable throwable) throws Exception {
+        log.warn context.request.uri, throwable
+    }
 }

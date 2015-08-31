@@ -10,7 +10,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "io.ratpack:ratpack-gradle:0.9.18"
+        classpath "io.ratpack:ratpack-gradle:0.9.19"
         classpath "org.jodd:jodd-http:3.6.6"
     }
 }

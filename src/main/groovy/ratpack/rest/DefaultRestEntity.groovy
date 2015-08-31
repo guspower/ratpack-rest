@@ -37,4 +37,10 @@ class DefaultRestEntity implements RestEntity {
         this.store = store
     }
 
+    DefaultRestEntity(String name, Class type, EntityStore store) {
+        this.name = name
+        this.type = type
+        this.store = store
+    }
+
 }

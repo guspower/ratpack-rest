@@ -1,5 +1,7 @@
 package ratpack.rest.fixture
 
+import ratpack.error.ClientErrorHandler
+import ratpack.error.ServerErrorHandler
 import ratpack.jackson.guice.JacksonModule
 import ratpack.rest.DefaultRestEntity
 import ratpack.rest.RestEntity
@@ -21,6 +23,8 @@ class RestDslSpec extends RatpackGroovyDslSpec {
             module RestModule, { RestModule.Config config ->
                 config.entities.addAll entities
             }
+            bind ServerErrorHandler, ErrorHandler
+            bind ClientErrorHandler, ErrorHandler
         }
         handlers { RestHandlers rest ->
             rest.register delegate
@@ -37,6 +41,10 @@ class RestDslSpec extends RatpackGroovyDslSpec {
 
     static RestEntity entity(Class type, List data) {
         new DefaultRestEntity(type, store(type, data))
+    }
+
+    static RestEntity entity(String name, Class type, List data) {
+        new DefaultRestEntity(name, type, store(type, data))
     }
 
     static String newEntityName() {

@@ -27,6 +27,14 @@ trait JsonHelper {
         response.headers['location'].tokenize('/')[-1]
     }
 
+    void json() {
+        requestSpec { RequestSpec spec ->
+            spec.body { RequestSpec.Body body ->
+                body.type('application/json')
+            }
+        }
+    }
+
     void jsonPayload(Map data) {
         requestSpec { RequestSpec spec ->
             spec.body { RequestSpec.Body body ->
