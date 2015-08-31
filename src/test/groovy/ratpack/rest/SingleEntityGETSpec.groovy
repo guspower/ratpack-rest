@@ -14,7 +14,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, [])])
 
         when:
-            get "/api/$name"
+            get "${path(name)}"
 
         then:
             json.array
@@ -29,7 +29,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             app ([])
 
         when:
-            get "/api/$unknown"
+            get "${path(unknown)}"
 
         then:
             response.statusCode == SC_NOT_FOUND
@@ -44,7 +44,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, data)])
 
         when:
-            get "/api/$name"
+            get "${path(name)}"
 
         then:
             data.size() == json.size()
@@ -61,7 +61,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, [])])
 
         when:
-            get "/api/$name/$id"
+            get "${path(name)}/$id"
 
         then:
             response.statusCode == SC_NOT_FOUND
@@ -76,7 +76,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, data)])
 
         when:
-            get "/api/$name/$id"
+            get "${path(name)}/$id"
 
         then:
             !json.array
@@ -94,7 +94,7 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, Bus, data)])
 
         when:
-            get "/api/$name/$id"
+            get "${path(name)}/$id"
 
         then:
             !json.array

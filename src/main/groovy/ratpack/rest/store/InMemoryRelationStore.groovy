@@ -12,12 +12,14 @@ class InMemoryRelationStore implements RelationStore {
 
     @Override
     String create(CreateRelation create) throws ConstraintViolationException {
-        relations << new DefaultRelation(
+        def relation = new DefaultRelation(
             id: UUID.randomUUID().toString(),
             from: create.from,
             to: create.to,
             name: create.name
         )
+        relations << relation
+        relation.id
     }
 
     @Override

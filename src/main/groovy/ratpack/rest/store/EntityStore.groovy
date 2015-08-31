@@ -10,6 +10,8 @@ interface EntityStore<T> {
 
     boolean deleteAll()
 
+    boolean exists(String id)
+
     List<T> getAll()
 
     T get(String id)

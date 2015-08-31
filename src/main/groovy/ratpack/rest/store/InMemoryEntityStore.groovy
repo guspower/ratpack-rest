@@ -58,6 +58,11 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
     }
 
     @Override
+    boolean exists(String id) {
+        get id
+    }
+
+    @Override
     List<T> getAll() {
         ImmutableList.copyOf(store)
     }

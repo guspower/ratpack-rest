@@ -5,7 +5,7 @@ import ratpack.rest.store.EntityStore
 import ratpack.rest.store.InMemoryEntityStore
 
 @ToString(includePackage = false, includeNames = true)
-class DefaultRestEntity implements RestEntity {
+class DefaultRestEntity implements Resource {
 
     static final DEFAULT_TYPE = HashMap.class
 

@@ -11,6 +11,9 @@ class RestModule extends ConfigurableModule<RestModule.Config> {
     @ToString(includePackage = false, includeNames = true)
     static class Config {
 
+        String resourcePath = 'api/resource'
+        String relationPath = 'api/relation'
+
         List<DefaultRestEntity> entities = []
 
         @Provides
@@ -22,7 +25,8 @@ class RestModule extends ConfigurableModule<RestModule.Config> {
 
     @Override
     protected void configure() {
-        bind RestHandlers
+        bind RestModuleHandlers
+        bind RelationHandler
     }
 
 }

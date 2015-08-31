@@ -12,19 +12,19 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, [[id:id]])])
 
         when:
-            get "/api/$name/$id"
+            get "${path(name)}/$id"
 
         then:
             id == json.id.asText()
 
         when:
-            delete "/api/$name/$id"
+            delete "${path(name)}/$id"
 
         then:
             response.statusCode == SC_NO_CONTENT
 
         when:
-            get "/api/$name/$id"
+            get "${path(name)}/$id"
 
         then:
             response.statusCode == SC_NOT_FOUND
@@ -39,7 +39,7 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, [])])
 
         when:
-            delete "/api/$name/$id"
+            delete "${path(name)}/$id"
 
         then:
             response.statusCode == SC_NOT_FOUND
@@ -54,20 +54,20 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, data)])
 
         when:
-            get "/api/$name"
+            get "${path(name)}"
 
         then:
             json.array
             2 == json.size()
 
         when:
-            delete "/api/$name"
+            delete "${path(name)}"
 
         then:
             response.statusCode == SC_NO_CONTENT
 
         when:
-            get "/api/$name"
+            get "${path(name)}"
 
         then:
             json.array
@@ -83,7 +83,7 @@ class SingleEntityDELETESpec extends RestDslSpec implements JsonHelper {
             app ([])
 
         when:
-            delete "/api/$unknown"
+            delete "${path(unknown)}"
 
         then:
             response.statusCode == SC_NOT_FOUND

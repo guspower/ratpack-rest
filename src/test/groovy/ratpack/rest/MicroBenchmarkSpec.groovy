@@ -30,7 +30,7 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
             app([RestDslSpec.entity(name, entityFixture.data)])
 
         and:
-            def httpFixture = new HttpFixture<HashMap>("${application.address}api/$name", entityFixture,
+            def httpFixture = new HttpFixture<HashMap>(path(name), entityFixture,
                 HttpFixture.Method.GET)
 
         when:
@@ -54,7 +54,7 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
             app([RestDslSpec.entity(name, entityFixture.data)])
 
         and:
-            def httpFixture = new HttpFixture<Bus>("${application.address}api/$name", entityFixture,
+            def httpFixture = new HttpFixture<Bus>(path(name), entityFixture,
                 HttpFixture.Method.GET)
 
         when:
@@ -78,7 +78,7 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
             app([RestDslSpec.entity(name, [])])
 
         and:
-            def httpFixture = new HttpFixture<HashMap>("${application.address}api/$name", entityFixture,
+            def httpFixture = new HttpFixture<HashMap>(path(name), entityFixture,
                 HttpFixture.Method.POST)
 
         when:
@@ -102,7 +102,7 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
             app([RestDslSpec.entity(name, [])])
 
         and:
-            def httpFixture = new HttpFixture<HashMap>("${application.address}api/$name", entityFixture,
+            def httpFixture = new HttpFixture<HashMap>(path(name), entityFixture,
                 HttpFixture.Method.POST)
 
         when:
@@ -126,6 +126,10 @@ class MicroBenchmarkSpec extends OnDemandApplicationSpec {
         int acceptableSuccessRate = 99
         int acceptableThroughput  = 100
 
+    }
+
+    private String path(String entityName) {
+        "${application.address}${new RestModule.Config().resourcePath}/$entityName"
     }
 
 }

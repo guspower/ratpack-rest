@@ -13,8 +13,10 @@ import ratpack.guice.Guice
 import ratpack.handling.Context
 import ratpack.jackson.guice.JacksonModule
 import ratpack.rest.DefaultRestEntity
-import ratpack.rest.RestHandlers
+import ratpack.rest.RestModuleHandlers
 import ratpack.rest.RestModule
+import ratpack.rest.store.InMemoryRelationStore
+import ratpack.rest.store.RelationStore
 import ratpack.server.RatpackServer
 import ratpack.server.ServerConfig
 import ratpack.server.ServerConfigBuilder
@@ -38,11 +40,12 @@ class OnDemandApplicationSpec extends Specification {
             module RestModule, { RestModule.Config config ->
                 config.entities.addAll entities
             }
+            bind RelationStore, InMemoryRelationStore
             bind ServerErrorHandler, ErrorHandler
             bind ClientErrorHandler, ErrorHandler
         }
-        handlers { RestHandlers rest ->
-            rest.register delegate
+        handlers { RestModuleHandlers rest ->
+            rest.all delegate
         }
         Thread.start {
             application = createApplication()

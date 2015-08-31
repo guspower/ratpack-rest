@@ -22,17 +22,22 @@
     
 ### Performance
 
-  * Throughput micro-benchmark [GET - single entity DONE, change to spread across multiple entities]
   * Concurrency test
   * Blocking test - slow store
   * Integrate coda hale metrics into benchmark reporting
+  * [DONE] Throughput micro-benchmark [GET - single entity DONE, change to spread across multiple entities]
+    
+## Relationships
+    
+  * Implement basic resource functionality (from, to, name)
+  * Use default name if none supplied
     
 ## Code
 
 ### Handler
 
-  * Make entity store operations blocking
   * Pull validation out into routing predicate
+  * [DONE] Make entity store operations blocking
   
 ### RestEntity
 

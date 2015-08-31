@@ -15,13 +15,13 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload newData
-            put "/api/$name/${data.id}"
+            put "${path(name)}/${data.id}"
 
         then:
             response.statusCode == SC_ACCEPTED
 
         when:
-            get "/api/$name/${data.id}"
+            get "${path(name)}/${data.id}"
 
         then:
             !json.array
@@ -39,13 +39,13 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, [data])])
 
         when:
-            put "/api/$name/${data.id}"
+            put "${path(name)}/${data.id}"
 
         then:
             response.statusCode == SC_NOT_MODIFIED
 
         when:
-            get "/api/$name/${data.id}"
+            get "${path(name)}/${data.id}"
 
         then:
             !json.array
@@ -63,13 +63,13 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload newData
-            put "/api/$name/${data.id}"
+            put "${path(name)}/${data.id}"
 
         then:
             response.statusCode == SC_ACCEPTED
 
         when:
-            get "/api/$name/${data.id}"
+            get "${path(name)}/${data.id}"
 
         then:
             !json.array
@@ -89,13 +89,13 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            put "/api/$name/$bus.id"
+            put "${path(name)}/$bus.id"
 
         then:
             response.statusCode == SC_ACCEPTED
 
         when:
-            get "/api/$name/${bus.id}"
+            get "${path(name)}/${bus.id}"
 
         then:
             !json.array
@@ -115,13 +115,13 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            put "/api/$name/${car.id}"
+            put "${path(name)}/${car.id}"
 
         then:
             response.statusCode == SC_ACCEPTED
 
         when:
-            get "/api/$name/${car.id}"
+            get "${path(name)}/${car.id}"
 
         then:
             !json.array
@@ -142,7 +142,7 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            put "/api/$name/${bus.id}"
+            put "${path(name)}/${bus.id}"
 
         then:
             def errors = getJson(SC_BAD_REQUEST)
@@ -175,7 +175,7 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            put "/api/$name/$id"
+            put "${path(name)}/$id"
 
         then:
             response.statusCode == SC_NOT_FOUND
@@ -192,7 +192,7 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            put "/api/$name/$id"
+            put "${path(name)}/$id"
 
         then:
             response.statusCode == SC_NOT_FOUND
@@ -208,7 +208,7 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, [])])
 
         when:
-            put "/api/$name"
+            put "${path(name)}"
 
         then:
             def errors = getJson(SC_BAD_REQUEST)
@@ -227,7 +227,7 @@ class SingleEntityPUTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            put "/api/$name/${car.id}"
+            put "${path(name)}/${car.id}"
 
         then:
             def errors = getJson(SC_BAD_REQUEST)

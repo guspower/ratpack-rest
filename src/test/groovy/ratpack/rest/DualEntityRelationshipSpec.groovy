@@ -13,8 +13,8 @@ class DualEntityRelationshipSpec extends RestDslSpec implements JsonHelper {
             app ([entity(entityName, entityType, data)])
 
         when:
-            jsonPayload ([from: data[0].id, to: data[1].id, name: relationshipName])
-            post "/api/relation"
+            jsonPayload ([from: data[0].id, to: data[1].id])
+            post "/api/relation/$relationshipName"
 
         then:
             response.statusCode == SC_CREATED
@@ -27,9 +27,9 @@ class DualEntityRelationshipSpec extends RestDslSpec implements JsonHelper {
         then:
             !json.array
             id         == json.id.asText()
-//            data[0].id == json.from.asText()
-//            data[1].id == json.to.asText()
-//            relationshipName == json.name.asText()
+            data[0].id == json.from.asText()
+            data[1].id == json.to.asText()
+            relationshipName == json.name.asText()
 
         where:
             entityName       = newEntityName()

@@ -15,7 +15,7 @@ class ConstraintFailure {
         }
     }
 
-    static List<ConstraintFailure> jsonMapping(JsonMappingException exception, RestEntity entity) {
+    static List<ConstraintFailure> jsonMapping(JsonMappingException exception, Resource entity) {
         [new ConstraintFailure(
             field:   exception.path[-1].fieldName,
             type:    entity.name,
@@ -23,7 +23,7 @@ class ConstraintFailure {
         )]
     }
 
-    static List<ConstraintFailure> clientSuppliedId(String name, String id) {
+    static List<ConstraintFailure> clientSuppliedId(String name, def id) {
         [new ConstraintFailure(
             field:   'id',
             value:   id,

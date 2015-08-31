@@ -4,11 +4,13 @@ import ratpack.error.ClientErrorHandler
 import ratpack.error.ServerErrorHandler
 import ratpack.jackson.guice.JacksonModule
 import ratpack.rest.DefaultRestEntity
-import ratpack.rest.RestEntity
-import ratpack.rest.RestHandlers
+import ratpack.rest.Resource
+import ratpack.rest.RestModuleHandlers
 import ratpack.rest.RestModule
 import ratpack.rest.store.EntityStore
 import ratpack.rest.store.InMemoryEntityStore
+import ratpack.rest.store.InMemoryRelationStore
+import ratpack.rest.store.RelationStore
 import ratpack.test.internal.RatpackGroovyDslSpec
 
 class RestDslSpec extends RatpackGroovyDslSpec {
@@ -23,11 +25,12 @@ class RestDslSpec extends RatpackGroovyDslSpec {
             module RestModule, { RestModule.Config config ->
                 config.entities.addAll entities
             }
+            bind RelationStore, InMemoryRelationStore
             bind ServerErrorHandler, ErrorHandler
             bind ClientErrorHandler, ErrorHandler
         }
-        handlers { RestHandlers rest ->
-            rest.register delegate
+        handlers { RestModuleHandlers rest ->
+            rest.all delegate
         }
     }
 
@@ -35,15 +38,15 @@ class RestDslSpec extends RatpackGroovyDslSpec {
         data ? new InMemoryEntityStore(type, data) : new InMemoryEntityStore(type)
     }
 
-    static RestEntity entity(String name, List data) {
+    static Resource entity(String name, List data) {
         new DefaultRestEntity(name, store(HashMap.class, data))
     }
 
-    static RestEntity entity(Class type, List data) {
+    static Resource entity(Class type, List data) {
         new DefaultRestEntity(type, store(type, data))
     }
 
-    static RestEntity entity(String name, Class type, List data) {
+    static Resource entity(String name, Class type, List data) {
         new DefaultRestEntity(name, type, store(type, data))
     }
 
@@ -53,6 +56,10 @@ class RestDslSpec extends RatpackGroovyDslSpec {
 
     static String newId() {
         UUID.randomUUID().toString()
+    }
+
+    protected String path(String entityName) {
+        "/${new RestModule.Config().resourcePath}/$entityName"
     }
 
 }

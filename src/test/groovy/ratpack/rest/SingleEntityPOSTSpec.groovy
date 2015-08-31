@@ -14,7 +14,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, [])])
 
         when:
-            post "/api/$name"
+            post "${path(name)}"
 
         then:
             response.statusCode == SC_CREATED
@@ -29,7 +29,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             id == json.id.asText()
 
         when:
-            get "/api/$name"
+            get "${path(name)}"
 
         then:
             json.array
@@ -46,7 +46,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            post "/api/$name"
+            post "${path(name)}"
 
         then:
             response.statusCode == SC_CREATED
@@ -71,7 +71,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             app ([entity(name, [])])
 
         when:
-            post "/api/$name/$id"
+            post "${path(name)}/$id"
 
         then:
             def errors = getJson(SC_BAD_REQUEST)
@@ -91,7 +91,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            post "/api/$name"
+            post "${path(name)}"
 
         then:
             def errors = getJson(SC_BAD_REQUEST)
@@ -111,7 +111,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            post "/api/$name"
+            post "${path(name)}"
 
         then:
             response.statusCode == SC_CREATED
@@ -139,7 +139,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            post "/api/$name"
+            post "${path(name)}"
 
         then:
             def errors = getJson(SC_BAD_REQUEST)
@@ -170,7 +170,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            post "/api/$name"
+            post "${path(name)}"
 
         then:
             response.statusCode == SC_CREATED
@@ -198,7 +198,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
 
         when:
             jsonPayload data
-            post "/api/$name"
+            post "${path(name)}"
 
         then:
             def errors = getJson(SC_BAD_REQUEST)
@@ -218,7 +218,7 @@ class SingleEntityPOSTSpec extends RestDslSpec implements JsonHelper {
             app()
 
         when:
-            post "/api/$name"
+            post "${path(name)}"
 
         then:
             response.statusCode == SC_NOT_FOUND
