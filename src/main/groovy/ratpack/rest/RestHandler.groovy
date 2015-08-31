@@ -78,11 +78,9 @@ class RestHandler implements Handler {
                     validationResponse context, ConstraintFailure.jsonMapping(e.cause, entity)
                 }.then { data ->
                     Blocking.get {
-                        try {
-                            entity.store.update(id, data)
-                        } catch(ConstraintViolationException validation) {
-                            validationResponse context, ConstraintFailure.constraintViolation(validation)
-                        }
+                        entity.store.update(id, data)
+                    }.onError { e ->
+                        validationResponse context, ConstraintFailure.constraintViolation(e)
                     }.then { boolean success ->
                         if (success) {
                             context.response.status SC_ACCEPTED

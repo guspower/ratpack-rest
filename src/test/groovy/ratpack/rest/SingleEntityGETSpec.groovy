@@ -1,5 +1,6 @@
 package ratpack.rest
 
+import ratpack.rest.fixture.Bus
 import ratpack.rest.fixture.JsonHelper
 import ratpack.rest.fixture.RestDslSpec
 import spock.lang.Unroll
@@ -85,6 +86,25 @@ class SingleEntityGETSpec extends RestDslSpec implements JsonHelper {
         where:
             name = newEntityName()
             data = [[field:'value1', id:'other'], [field:'value2', id:'expected']]
+            id   = 'expected'
+    }
+
+    def "returns known typed entity by id"() {
+        given:
+            app ([entity(name, Bus, data)])
+
+        when:
+            get "/api/$name/$id"
+
+        then:
+            !json.array
+            id             == json.id.asText()
+            data[0].name   == json.name.asText()
+            data[0].colour == json.colour.asText()
+
+        where:
+            name = newEntityName()
+            data = [new Bus(name:'419', colour:'red', id:'expected')]
             id   = 'expected'
     }
 

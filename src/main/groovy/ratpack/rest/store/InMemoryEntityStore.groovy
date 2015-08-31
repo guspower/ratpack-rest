@@ -9,11 +9,13 @@ import javax.validation.Validator
 
 class InMemoryEntityStore<T> implements EntityStore<T> {
 
+    private final static Class DEFAULT_TYPE = HashMap.class
+
     private final List<T> store = []
     private final Class entityType
 
     InMemoryEntityStore() {
-        this.entityType = HashMap.class
+        this.entityType = DEFAULT_TYPE
     }
 
     InMemoryEntityStore(Class entityType) {
@@ -86,10 +88,12 @@ class InMemoryEntityStore<T> implements EntityStore<T> {
     }
 
     private void validate(Object instance) {
-        Validator validator = Validation.buildDefaultValidatorFactory().validator
-        Set<ConstraintViolation> violations = validator.validate(instance)
-        if(violations) {
-            throw new ConstraintViolationException(violations)
+        if(!instance.getClass().isAssignableFrom(DEFAULT_TYPE)) {
+            Validator validator = Validation.buildDefaultValidatorFactory().validator
+            Set<ConstraintViolation> violations = validator.validate(instance)
+            if (violations) {
+                throw new ConstraintViolationException(violations)
+            }
         }
     }
 
