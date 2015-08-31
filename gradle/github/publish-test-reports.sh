@@ -15,8 +15,8 @@ find .
 
 if [ "$TRAVIS_BRANCH" == "master" ]; then
     git checkout gh-pages
-    find .
     git add -A -f build/reports
+    git status
     git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
     git push https://${GH_TOKEN}@github.com/${REPO} gh-pages > /dev/null
 fi
