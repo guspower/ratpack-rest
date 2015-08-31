@@ -14,7 +14,10 @@ git fetch -qn upstream > /dev/null
 find .
 
 if [ "$TRAVIS_BRANCH" == "master" ]; then
+    mkdir -p /tmp/gh-pages
+    cp -R build/reports /tmp/gh-pages
     git checkout gh-pages
+    cp -R /tmp/gh-pages/reports build
     git add -A -f build/reports
     git status
     git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
